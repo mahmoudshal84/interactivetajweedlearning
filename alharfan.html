@@ -122,6 +122,64 @@
             margin-bottom: 1.5rem;
             color: #3b82f6;
         }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 280px;
+            height: calc(100vh - 80px);
+            background: white;
+            border-right: 2px solid #D4AF37;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 40;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .sidebar-item {
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background: #f9fafb;
+        }
+
+        .sidebar-item:hover {
+            background: #f3f4f6;
+            transform: translateX(5px);
+        }
+
+        .sidebar-item.active {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            transform: translateX(5px);
+        }
+
+        .content-with-sidebar {
+            margin-left: 300px;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                display: none;
+            }
+
+            .content-with-sidebar {
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
@@ -135,9 +193,19 @@
         </div>
     </nav>
 
-    <main>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-title">Letter Meeting Types</div>
+        <div class="sidebar-item" onclick="scrollToSection('introduction')">Introduction</div>
+        <div class="sidebar-item" onclick="scrollToSection('identical')">Identical Letters</div>
+        <div class="sidebar-item" onclick="scrollToSection('similar')">Similar Letters</div>
+        <div class="sidebar-item" onclick="scrollToSection('close')">Close Letters</div>
+        <div class="sidebar-item" onclick="scrollToSection('far')">Far Letters</div>
+    </aside>
+
+    <main class="content-with-sidebar">
         <!-- Maintenance message -->
-        <div class="maintenance-container">
+        <div id="introduction" class="maintenance-container">
             <div class="maintenance-icon">🚧</div>
             <h2 class="text-3xl font-bold text-gray-800 mb-4">This Page is Currently Being Worked On</h2>
             <p class="text-xl text-gray-600 mb-6">We're making improvements to this content about Meeting of Letters (الحرفان الملتقيان) in Quranic Recitation.</p>
@@ -146,9 +214,57 @@
                 <a href="index.html" class="px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Return to Home</a>
             </div>
         </div>
+
+        <!-- Placeholder sections for future content -->
+        <div id="identical" style="height: 1px;"></div>
+        <div id="similar" style="height: 1px;"></div>
+        <div id="close" style="height: 1px;"></div>
+        <div id="far" style="height: 1px;"></div>
     </main>
 
-    <!-- 
+    <script>
+        // Scroll navigation
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                updateActiveNav(sectionId);
+            }
+        }
+
+        function updateActiveNav(activeId) {
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            const sections = ['introduction', 'identical', 'similar', 'close', 'far'];
+            const index = sections.indexOf(activeId);
+            if (index !== -1) {
+                document.querySelectorAll('.sidebar-item')[index].classList.add('active');
+            }
+        }
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = ['introduction', 'identical', 'similar', 'close', 'far'];
+            let currentSection = '';
+
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 150 && rect.bottom >= 150) {
+                        currentSection = sectionId;
+                    }
+                }
+            });
+
+            if (currentSection) {
+                updateActiveNav(currentSection);
+            }
+        });
+    </script>
+
+    <!--
     Commented out all scripts
     <script>
         const quizQuestions = [

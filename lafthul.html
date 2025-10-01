@@ -106,6 +106,64 @@
             height: 1px;
             background: #e2e8f0;
         }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 280px;
+            height: calc(100vh - 80px);
+            background: white;
+            border-right: 2px solid #D4AF37;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 40;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .sidebar-item {
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background: #f9fafb;
+        }
+
+        .sidebar-item:hover {
+            background: #f3f4f6;
+            transform: translateX(5px);
+        }
+
+        .sidebar-item.active {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            transform: translateX(5px);
+        }
+
+        .content-with-sidebar {
+            margin-left: 300px;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                display: none;
+            }
+
+            .content-with-sidebar {
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
@@ -118,9 +176,16 @@
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-title">Lafth-ul-Jalalah Rules</div>
+        <div class="sidebar-item" onclick="scrollToSection('rules')">Rules Overview</div>
+        <div class="sidebar-item" onclick="scrollToSection('quiz')">Test Your Knowledge</div>
+    </aside>
+
+    <main class="content-with-sidebar max-w-6xl mx-auto px-4 py-8 space-y-12">
         <!-- Main Rules Section -->
-        <section class="rule-card">
+        <section id="rules" class="rule-card">
             <h2 class="section-title text-3xl font-bold text-slate-800">Rules of Lafth-ul-Jalalah (الله)</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Tafkheem Case -->
@@ -166,7 +231,7 @@
         </section>
 
         <!-- Quiz Section -->
-        <section class="rule-card mt-8">
+        <section id="quiz" class="rule-card mt-8">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-semibold text-gray-800">Test Your Knowledge</h2>
                 <div class="text-gray-800">
@@ -418,6 +483,46 @@
         // Initialize the quiz when the page loads
         document.addEventListener('DOMContentLoaded', function() {
             initializeQuiz();
+        });
+
+        // Scroll navigation
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                updateActiveNav(sectionId);
+            }
+        }
+
+        function updateActiveNav(activeId) {
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            const sections = ['rules', 'quiz'];
+            const index = sections.indexOf(activeId);
+            if (index !== -1) {
+                document.querySelectorAll('.sidebar-item')[index].classList.add('active');
+            }
+        }
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = ['rules', 'quiz'];
+            let currentSection = '';
+
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 150 && rect.bottom >= 150) {
+                        currentSection = sectionId;
+                    }
+                }
+            });
+
+            if (currentSection) {
+                updateActiveNav(currentSection);
+            }
         });
 
     </script>
