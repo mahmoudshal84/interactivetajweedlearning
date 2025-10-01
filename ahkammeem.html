@@ -114,6 +114,82 @@
     display: none;
 }
 
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 280px;
+            height: calc(100vh - 80px);
+            background: white;
+            border-right: 2px solid #D4AF37;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 40;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .sidebar-item {
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background: #f9fafb;
+        }
+
+        .sidebar-item:hover {
+            background: #f3f4f6;
+            transform: translateX(5px);
+        }
+
+        .sidebar-item.active {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            transform: translateX(5px);
+        }
+
+        .sidebar-item-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #D4AF37;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.875rem;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .sidebar-item.active .sidebar-item-number {
+            background: #3b82f6;
+        }
+
+        .content-with-sidebar {
+            margin-left: 300px;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                display: none;
+            }
+
+            .content-with-sidebar {
+                margin-left: 0;
+            }
+        }
+
         @media (max-width: 767px) {
     audio {
         display: none;
@@ -136,7 +212,13 @@
     </div>
 </nav>
 
-<main class="max-w-6xl mx-auto px-4 py-8">
+<!-- Sidebar Navigation -->
+<aside class="sidebar">
+    <div class="sidebar-title">Three Rules of Meem Sakinah</div>
+    <div id="sidebarNav"></div>
+</aside>
+
+<main class="content-with-sidebar max-w-6xl mx-auto px-4 py-8">
     <!-- Learning Mode Section -->
     <div id="learningMode">
         <div id="ruleContainer"></div>
@@ -220,6 +302,22 @@
 
         let currentRule = 0;
 
+        function renderSidebar() {
+            const sidebarNav = document.getElementById('sidebarNav');
+            sidebarNav.innerHTML = rules.map((rule, index) => `
+                <div class="sidebar-item ${index === currentRule ? 'active' : ''}" onclick="setRule(${index})">
+                    <span class="sidebar-item-number">${rule.number}</span>
+                    <span class="sidebar-item-title">${rule.title.split(' - ')[1] || rule.title}</span>
+                </div>
+            `).join('') + `
+                <div class="mt-6 pt-4 border-t-2 border-gray-200">
+                    <button onclick="scrollToQuiz()" class="w-full px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 font-semibold transition-all transform hover:scale-105">
+                        Go to Quiz! 📝
+                    </button>
+                </div>
+            `;
+        }
+
         function renderRule() {
     const rule = rules[currentRule];
     const container = document.getElementById('ruleContainer');
@@ -266,19 +364,28 @@
     `;
 }
 
+        function scrollToQuiz() {
+            const quizSection = document.getElementById('quizMode');
+            quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
         function nextRule() {
             currentRule = (currentRule + 1) % rules.length;
             renderRule();
+            renderSidebar();
         }
 
         function prevRule() {
             currentRule = (currentRule - 1 + rules.length) % rules.length;
             renderRule();
+            renderSidebar();
         }
 
         function setRule(index) {
             currentRule = index;
             renderRule();
+            renderSidebar();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Quiz questions database
@@ -497,6 +604,7 @@ function toggleAudio(button, audioSrc) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    renderSidebar();
     renderRule();
     initializeQuiz();
 });
