@@ -94,6 +94,64 @@
             background-color: #fee2e2;
             border-color: #fca5a5;
         }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 280px;
+            height: calc(100vh - 80px);
+            background: white;
+            border-right: 2px solid #D4AF37;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 40;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .sidebar-item {
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background: #f9fafb;
+        }
+
+        .sidebar-item:hover {
+            background: #f3f4f6;
+            transform: translateX(5px);
+        }
+
+        .sidebar-item.active {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            transform: translateX(5px);
+        }
+
+        .content-with-sidebar {
+            margin-left: 300px;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                display: none;
+            }
+
+            .content-with-sidebar {
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
@@ -106,13 +164,24 @@
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-title">Places of Articulation</div>
+        <div class="sidebar-item" onclick="scrollToSection('jauf')">Al Jauf (Empty Space)</div>
+        <div class="sidebar-item" onclick="scrollToSection('halq')">Al Halq (Throat)</div>
+        <div class="sidebar-item" onclick="scrollToSection('lisaan-nontip')">Al Lisaan (Tongue - Non-Tip)</div>
+        <div class="sidebar-item" onclick="scrollToSection('lisaan-tip')">Al Lisaan (Tongue - Tip)</div>
+        <div class="sidebar-item" onclick="scrollToSection('shafataan')">Ash Shafataan (Lips)</div>
+        <div class="sidebar-item" onclick="scrollToSection('khayshoom')">Al Khayshoom (Nasal)</div>
+    </aside>
+
+    <main class="content-with-sidebar max-w-6xl mx-auto px-4 py-8 space-y-12">
         <!-- Main Content Section -->
         <section class="rule-card">
             <h2 class="section-title text-3xl font-bold text-slate-800">Places of Articulation</h2>
             
             <!-- Al Jauf - New Section -->
-            <div class="char-card makhraj-section p-6 mb-6">
+            <div id="jauf" class="char-card makhraj-section p-6 mb-6">
                 <h3 class="text-xl font-semibold text-slate-800 mb-4">Al Jauf (The Empty Space in the Mouth)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-4">
@@ -134,7 +203,7 @@
             </div>
             
             <!-- Al Halq (Throat) Section - Updated -->
-            <div class="char-card makhraj-section p-6 mb-6">
+            <div id="halq" class="char-card makhraj-section p-6 mb-6">
                 <h3 class="text-xl font-semibold text-slate-800 mb-4">Al Halq (The Throat)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-4">
@@ -167,7 +236,7 @@
             </div>
 
             <!-- Al Lisaan (Tongue) - Non-Tip Group Section -->
-            <div class="char-card makhraj-section p-6 mb-6">
+            <div id="lisaan-nontip" class="char-card makhraj-section p-6 mb-6">
                 <h3 class="text-xl font-semibold text-slate-800 mb-4">Al Lisaan (The Tongue) - Non-Tip Group</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-4">
@@ -212,7 +281,7 @@
             </div>
 
             <!-- Al Lisaan (Tongue) - Tip Group Section -->
-            <div class="char-card makhraj-section p-6 mb-6">
+            <div id="lisaan-tip" class="char-card makhraj-section p-6 mb-6">
                 <h3 class="text-xl font-semibold text-slate-800 mb-4">Al Lisaan (The Tongue) - Tip Group</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-4">
@@ -259,7 +328,7 @@
             </div>
 
             <!-- Ash Shafataan (The Lips) Section -->
-            <div class="char-card makhraj-section p-6 mb-6">
+            <div id="shafataan" class="char-card makhraj-section p-6 mb-6">
                 <h3 class="text-xl font-semibold text-slate-800 mb-4">Ash Shafataan (The Lips)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-4">
@@ -286,7 +355,7 @@
             </div>
 
             <!-- Al Khayshoom (The Nasal Passage) - New Section -->
-            <div class="char-card makhraj-section p-6 mb-6">
+            <div id="khayshoom" class="char-card makhraj-section p-6 mb-6">
                 <h3 class="text-xl font-semibold text-slate-800 mb-4">Al Khayshoom (The Nasal Passage)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-4">
@@ -670,6 +739,46 @@
         // Initialize the quiz when the page loads
         document.addEventListener('DOMContentLoaded', function() {
             initializeQuiz();
+        });
+
+        // Scroll navigation
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                updateActiveNav(sectionId);
+            }
+        }
+
+        function updateActiveNav(activeId) {
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            const sections = ['jauf', 'halq', 'lisaan-nontip', 'lisaan-tip', 'shafataan', 'khayshoom'];
+            const index = sections.indexOf(activeId);
+            if (index !== -1) {
+                document.querySelectorAll('.sidebar-item')[index].classList.add('active');
+            }
+        }
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = ['jauf', 'halq', 'lisaan-nontip', 'lisaan-tip', 'shafataan', 'khayshoom'];
+            let currentSection = '';
+
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 150 && rect.bottom >= 150) {
+                        currentSection = sectionId;
+                    }
+                }
+            });
+
+            if (currentSection) {
+                updateActiveNav(currentSection);
+            }
         });
     </script>
     </body>
