@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules of Noon Sakinah and Tanween</title>
+    <link rel="icon" href="./FrontPageTileImages/favicon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        .arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+        }
+
+        .audio-example {
+    background-color: #f8fafc;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 12px 0;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+        .audio-example:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .rule-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+        }
+        
+        .rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #93c5fd;
+        }
+
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .mode-button {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-button:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+
+        .mode-button:hover:after {
+            width: 200%;
+            height: 200%;
+        }
+
+        /* Custom audio player styles */
+.custom-audio-player {
+    display: flex;
+    align-items: center;
+}
+
+.play-button {
+    display: none;
+}
+
+        @media (max-width: 767px) {
+    audio {
+        display: none;
+    }
+
+    .play-button {
+        display: flex;
+    }
+}
+    </style>
+</head>
+<body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
+
+    <nav class="bg-gray-100/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+        <div class="rule-card flex items-center justify-between h-16">
+            <a href="index.html" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">← Back to Home</a>
+            <h1 class="text-2xl font-bold text-gray-800">Rules of Meem Sakinah (مْ)</h1>
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Learning Mode Section -->
+    <div id="learningMode">
+        <div id="ruleContainer"></div>
+    </div>
+
+    <!-- Quiz Mode Section -->
+    <div id="quizMode" class="rule-card mt-8">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-semibold text-gray-800">Test Your Knowledge</h2>
+            <div class="text-gray-800">
+                Score: <span id="score" class="font-bold">0</span>/<span id="totalQuestions">0</span>
+            </div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+        </div>
+
+        <div id="quizContainer" class="mb-6"></div>
+        
+        <div id="feedback" class="mb-4 p-4 rounded-lg hidden"></div>
+        
+        <div class="flex justify-between">
+            <button onclick="previousQuestion()" id="prevBtn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50">Previous</button>
+            <button onclick="nextQuestion()" id="nextBtn" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Next</button>
+        </div>
+    </div>
+</main>
+
+    <script>
+    const rules = [
+    {
+        number: 1,
+        title: "ادغام شفوي - Idghaam Shafawi (Merge)",
+        letters: "(م)",
+        color: "bg-blue-500",
+        description: `When you see a <strong>meem sakinah</strong> (a meem with no vowel), and <strong>right after it comes another meem</strong>, it <strong>merges into it and is given a ghunnah of 2 counts.</strong> See examples of Idghaam Shafawi below.`,
+        examples: [
+            { arabic: "كَم مِنْ", transliteration: "kam min", audio: "audio/page2/Idghaamshafawi/example1.m4a", explanation: "The meem sakinah (مْ) in كَمْ merges<br>completely with the following meem in مِنْ" },
+            { arabic: "لَكُم مَا", transliteration: "lakum maa", audio: "audio/page2/Idghaamshafawi/example2.m4a", explanation: "The meem sakinah (مْ) in لَكُمْ merges<br>with the following meem in مَا" },
+            { arabic: "عَلَيْهِم مُؤْصَدَةٌ", transliteration: "alayhim mu'sadah", audio: "audio/page2/Idghaamshafawi/example3.m4a", explanation: "The meem sakinah (مْ) in عَلَيْهِمْ merges<br>with the following meem in مُؤْصَدَةٌ" },
+            { arabic: "أَم مَنْ", transliteration: "am man", audio: "audio/page2/Idghaamshafawi/example4.m4a", explanation: "The meem sakinah (مْ) in أَمْ merges<br>with the following meem in مَنْ" },
+            { arabic: "إِنَّكُم مَا", transliteration: "innakum maa", audio: "audio/page2/Idghaamshafawi/example5.m4a", explanation: "The meem sakinah (مْ) in إِنَّكُمْ merges<br>with the following meem in مَا" },
+            { arabic: "لَهُم مِنْهَا", transliteration: "lahum minhaa", audio: "audio/page2/Idghaamshafawi/example6.m4a", explanation: "The meem sakinah (مْ) in لَهُمْ merges<br>with the following meem in مِنْهَا" },
+            { arabic: "وَلَكُم مَا", transliteration: "wa lakum maa", audio: "audio/page2/Idghaamshafawi/example7.m4a", explanation: "The meem sakinah (مْ) in وَلَكُمْ merges<br>with the following meem in مَا" }
+        ]
+    },
+    {
+        number: 2,
+        title: "اخفاء شفوي - Ikhfaa Shafawi (Hide)",
+        letters: "(ب)",
+        color: "bg-green-500",
+        description: `When you see a <strong>meem sakinah</strong> (a meem with no vowel), and <strong>right after it comes a baa (ب)</strong>, it must be <strong>pronounced as a meem with a ghunnah of 2 counts</strong>, while the lips are closed softly without pressure. See examples of Ikhfaa Shafawi below.`,
+        examples: [
+            { arabic: "تَرْمِيهِم بِحِجَارَةٍ", transliteration: "tarmeehimm bihijaarah", audio: "audio/page2/ikhfashafawi/example1.m4a", explanation: "The meem sakinah (مْ) in تَرْمِيهِمْ is hidden<br>when meeting the ba (ب) in بِحِجَارَةٍ" },
+            { arabic: "هُم بِهِ", transliteration: "humm bih", audio: "audio/page2/ikhfashafawi/example2.m4a", explanation: "The meem sakinah (مْ) in هُمْ is hidden<br>when meeting the ba (ب) in بِهِ" },
+            { arabic: "وَمَا هُم بِمُؤْمِنِينَ", transliteration: "wa maa humm bimu'mineen", audio: "audio/page2/ikhfashafawi/example3.m4a", explanation: "The meem sakinah (مْ) in هُمْ is hidden<br>when meeting the ba (ب) in بِمُؤْمِنِينَ" },
+            { arabic: "رَبَّهُم بِٱلۡغَيۡبِ", transliteration: "rabbahumm bilghayb", audio: "audio/page2/ikhfashafawi/example4.m4a", explanation: "The meem sakinah (مْ) in رَبَّهُم is hidden<br>when meeting the ba (ب) in بِٱلۡغَيۡبِ" },
+            { arabic: "اعْتَصِم بِاللَّهِ", transliteration: "i'tasimm billaah", audio: "audio/page2/ikhfashafawi/example5.m4a", explanation: "The meem sakinah (مْ) in لَهُمْ is hidden<br>when meeting the ba (ب) in بَابٌ" },
+            { arabic: "أَم بِظَاهِرٍ", transliteration: "amm bithaahir", audio: "audio/page2/ikhfashafawi/example6.m4a", explanation: "The meem sakinah (مْ) in أَمْ is hidden<br>when meeting the ba (ب) in بِظَاهِرٍ" },
+            { arabic: "وَهُم بِالْآخِرَةِ", transliteration: "wa humm bil'aakhirah", audio: "audio/page2/ikhfashafawi/example7.m4a", explanation: "The meem sakinah (مْ) in وَهُمْ is hidden<br>when meeting the ba (ب) in بِالْآخِرَةِ" }
+        ]
+    },
+        {
+        number: 3,
+        title: "اظهار شفوي - Idhhaar Shafawi (Clear)",
+        letters: "(all the letters other than م and ب)",
+        color: "bg-purple-500",
+        description: `When you see a <strong>meem sakinah</strong> (a meem with no vowel), and <strong>right after it comes any letter other than meem (م) or ba (ب)</strong>, it must be <strong>pronounced clearly without any clear ghunnah.</strong> See examples of Idhhaar Shafawi below.`,
+        examples: [
+            { arabic: "عَلَيْهِمْ وَلَا", transliteration: "alayhim wa laa", audio: "audio/page2/ithharshafawi/example1.m4a", explanation: "The meem sakinah (مْ) in عَلَيْهِمْ is pronounced<br>clearly because it's followed by و" },
+            { arabic: "أَمْ تَسْأَلُهُمْ", transliteration: "am tas'aluhum", audio: "audio/page2/ithharshafawi/example2.m4a", explanation: "The meem sakinah (مْ) in أَمْ is pronounced<br>clearly because it's followed by ت" },
+            { arabic: "لَهُمْ فِيهَا", transliteration: "lahum feeha", audio: "audio/page2/ithharshafawi/example3.m4a", explanation: "The meem sakinah (مْ) in لَهُمْ is pronounced<br>clearly because it's followed by ف" },
+            { arabic: "عَلَيْهِمْ دَآئِرَةُ", transliteration: "alayhim daaaa'irah", audio: "audio/page2/ithharshafawi/example4.m4a", explanation: "The meem sakinah (مْ) in عَلَيْهِمْ is pronounced<br>clearly because it's followed by د" },
+            { arabic: "هُمْ خَالِدُونَ", transliteration: "hum khaalidoon", audio: "audio/page2/ithharshafawi/example5.m4a", explanation: "The meem sakinah (مْ) in هُمْ is pronounced<br>clearly because it's followed by خ" },
+            { arabic: "لَهُمْ عَذَابٌ", transliteration: "lahum 'adhaab", audio: "audio/page2/ithharshafawi/example6.m4a", explanation: "The meem sakinah (مْ) in لَهُمْ is pronounced<br>clearly because it's followed by ع" },
+            { arabic: "أَمْ كُنْتُمْ", transliteration: "am ku--tum", audio: "audio/page2/ithharshafawi/example7.m4a", explanation: "The meem sakinah (مْ) in أَمْ is pronounced<br>clearly because it's followed by ك" }
+        ]
+        }
+];
+
+        let currentRule = 0;
+
+        function renderRule() {
+    const rule = rules[currentRule];
+    const container = document.getElementById('ruleContainer');
+    
+    container.innerHTML = `
+        <div class="relative max-w-4xl mx-auto">
+            <div class="rule-card">
+                <div class="flex justify-between items-center mb-4">
+                    <button onclick="prevRule()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Previous</button>
+                    <div class="text-center">
+                        <h2 class="text-2xl font-semibold text-gray-800">${rule.title}</h2>
+                        <div class="mt-2 text-lg font-arabic">${rule.letters}</div>
+                    </div>
+                    <button onclick="nextRule()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Next</button>
+                </div>
+                <p class="mb-6 text-gray-600">${rule.description}</p>
+                <div class="examples-grid">
+                    ${rule.examples.map((example, index) => `
+                        <div class="audio-example">
+                            <div class="flex items-start gap-4">
+                                <div class="flex gap-4 items-center">
+                                    <span class="arabic text-2xl">${example.arabic}</span>
+                                    <div class="custom-audio-player">
+    <button class="play-button" onclick="toggleAudio(this, '${example.audio}')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+    </button>
+    <audio controls class="flex-shrink-0">
+        <source src="${example.audio}" type="audio/mp4">
+    </audio>
+</div>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="text-gray-600 italic">${example.transliteration}</div>
+                                    <div class="text-gray-700 text-sm mt-1 italic font-semibold">${example.explanation || ''}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+        function nextRule() {
+            currentRule = (currentRule + 1) % rules.length;
+            renderRule();
+        }
+
+        function prevRule() {
+            currentRule = (currentRule - 1 + rules.length) % rules.length;
+            renderRule();
+        }
+
+        function setRule(index) {
+            currentRule = index;
+            renderRule();
+        }
+
+        // Quiz questions database
+        const quizQuestions = [
+    {
+        question: "What happens when meem sakinah meets another meem?",
+        options: ["Clear pronunciation", "Merging with ghunnah", "Hidden pronunciation", "No pronunciation"],
+        correct: 1,
+        explanation: "When meem sakinah meets another meem, it merges with ghunnah (Idghaam Shafawi)."
+    },
+    {
+        question: "What is the rule when meem sakinah is followed by the letter ب?",
+        options: ["Idghaam Shafawi", "Ikhfaa Shafawi", "Idhhaar Shafawi", "No specific rule"],
+        correct: 1,
+        explanation: "When meem sakinah meets ب (ba), it is pronounced as a meem along with ghunnah of 2 counts (Ikhfaa Shafawi)."
+    },
+    {
+        question: "In هُم بِهِ, which rule is applied?",
+        options: ["Idghaam Shafawi", "Ikhfaa Shafawi", "Idhhaar Shafawi", "No rule"],
+        correct: 1,
+        explanation: "In هُمْ بِهِ, the meem sakinah is followed by ب, so Ikhfaa Shafawi is applied."
+    },
+    {
+        question: "How many letters cause Ikhfaa Shafawi?",
+        options: ["One (ب)", "Two (ب م)", "Three (ب م و)", "All except ب and م"],
+        correct: 0,
+        explanation: "Only one letter - ب (ba) - causes Ikhfaa Shafawi."
+    },
+    {
+        question: "In عَلَيْهِمْ وَلَا, what rule is applied to the meem sakinah?",
+        options: ["Idghaam Shafawi", "Ikhfaa Shafawi", "Idhhaar Shafawi", "No rule"],
+        correct: 2,
+        explanation: "Since و is not م or ب, the meem sakinah is pronounced clearly (Idhhaar Shafawi)."
+    },
+    {
+        question: "Which rule applies to the most letters?",
+        options: ["Idghaam Shafawi", "Ikhfaa Shafawi", "Idhhaar Shafawi", "All rules apply equally"],
+        correct: 2,
+        explanation: "Idhhaar Shafawi applies to all letters except م and ب, making it the rule with the most letters."
+    },
+    {
+        question: "In لَهُم مِنْهَا, what happens to the meem sakinah?",
+        options: ["Clear pronunciation", "Merging with ghunnah", "Hidden pronunciation", "No specific rule"],
+        correct: 1,
+        explanation: "In لَهُم مِنْهَا, the meem sakinah merges with the following meem with ghunnah (Idghaam Shafawi)."
+    },
+    {
+        question: "Which rule requires a ghunnah sound of 2 counts?",
+        options: ["Only Idghaam Shafawi", "Only Ikhfaa Shafawi", "Both Idghaam and Ikhfaa Shafawi", "Neither"],
+        correct: 2,
+        explanation: "Both Idghaam Shafawi and Ikhfaa Shafawi require a ghunnah sound of 2 counts."
+    },
+    {
+        question: "In أَمْ كُنْتُمْ, which rule applies?",
+        options: ["Idghaam Shafawi", "Ikhfaa Shafawi", "Idhhaar Shafawi", "No rule"],
+        correct: 2,
+        explanation: "Since the letter after meem sakinah is ك, which is neither م nor ب, Idhhaar Shafawi applies."
+    },
+    {
+        question: "When does Idhhaar Shafawi occur?",
+        options: ["With م only", "With ب only", "With any letter except م and ب", "With all letters"],
+        correct: 2,
+        explanation: "Idhhaar Shafawi occurs when meem sakinah is followed by any letter except م and ب."
+    },
+    {
+        question: "In عَلَيْهِم بِالْغَيْبِ, which rule is demonstrated?",
+        options: ["Idghaam Shafawi", "Ikhfaa Shafawi", "Idhhaar Shafawi", "No specific rule"],
+        correct: 1,
+        explanation: "In عَلَيْهِمْ بِالْغَيْبِ, the meem sakinah is followed by ب, so Ikhfaa Shafawi (hidden pronunciation with ghunnah) is applied."
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answeredQuestions = new Set();
+
+function initializeQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    answeredQuestions = new Set();
+    document.getElementById('score').textContent = '0';
+    document.getElementById('totalQuestions').textContent = quizQuestions.length;
+    updateProgressBar();
+    displayQuestion();
+    updateNavigationButtons();
+}
+
+function displayQuestion() {
+    const quiz = quizQuestions[currentQuestion];
+    const container = document.getElementById('quizContainer');
+    const isAnswered = answeredQuestions.has(currentQuestion);
+    
+    container.innerHTML = `
+        <div class="mb-6">
+            <p class="text-xl mb-6 text-gray-800">${quiz.question}</p>
+            <div class="options-container">
+                ${quiz.options.map((option, index) => `
+                    <div class="quiz-option p-4 border rounded-lg mb-3" 
+                        onclick="checkAnswer(${index})" 
+                        data-index="${index}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+
+    if (isAnswered) {
+        const options = container.querySelectorAll('.quiz-option');
+        options.forEach((option, index) => {
+            if (index === quiz.correct) {
+                option.classList.add('correct');
+            }
+        });
+        
+        container.innerHTML += `
+            <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                <p class="font-semibold mb-2">Explanation:</p>
+                <p>${quiz.explanation}</p>
+            </div>
+        `;
+    }
+}
+
+function checkAnswer(selected) {
+    if (answeredQuestions.has(currentQuestion)) return;
+
+    const quiz = quizQuestions[currentQuestion];
+    const options = document.querySelectorAll('.quiz-option');
+    const selectedOption = options[selected];
+    const container = document.getElementById('quizContainer');
+    
+    if (selected === quiz.correct) {
+        selectedOption.classList.add('correct');
+        score++;
+        document.getElementById('score').textContent = score;
+    } else {
+        selectedOption.classList.add('incorrect');
+        options[quiz.correct].classList.add('correct');
+    }
+
+    container.innerHTML += `
+        <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+            <p class="font-semibold mb-2">Explanation:</p>
+            <p>${quiz.explanation}</p>
+        </div>
+    `;
+
+    answeredQuestions.add(currentQuestion);
+    updateProgressBar();
+    updateNavigationButtons();
+}
+
+function updateProgressBar() {
+    const progress = (answeredQuestions.size / quizQuestions.length) * 100;
+    document.querySelector('.progress-fill').style.width = `${progress}%`;
+}
+
+function updateNavigationButtons() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    prevBtn.disabled = currentQuestion === 0;
+    
+    if (currentQuestion === quizQuestions.length - 1) {
+        nextBtn.textContent = 'Restart Quiz';
+        nextBtn.onclick = initializeQuiz;
+        nextBtn.disabled = false;  // Enable restart button
+    } else {
+        nextBtn.textContent = 'Next';
+        nextBtn.disabled = false;  // Always enable Next button
+        nextBtn.onclick = nextQuestion;
+    }
+}
+
+function nextQuestion() {
+    if (currentQuestion < quizQuestions.length - 1) {
+        currentQuestion++;
+        displayQuestion();
+        updateNavigationButtons();
+    }
+}
+
+function previousQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        displayQuestion();
+        updateNavigationButtons();
+    }
+}
+
+// Audio playback control
+function toggleAudio(button, audioSrc) {
+    const audioElement = button.nextElementSibling;
+    
+    if (audioElement.paused) {
+        // Pause all other playing audio elements first
+        document.querySelectorAll('audio').forEach(audio => {
+            if (!audio.paused) {
+                audio.pause();
+                const playButton = audio.previousElementSibling;
+                if (playButton) {
+                    playButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+                }
+            }
+        });
+        
+        // Play this audio
+        audioElement.play();
+        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+    } else {
+        // Pause this audio
+        audioElement.pause();
+        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderRule();
+    initializeQuiz();
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Important Tajweed Topics</title>
+    <link rel="icon" href="./FrontPageTileImages/favicon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        .arabic {
+            font-family: 'Amiri', serif;
+        }
+
+        .topic-card {
+            background: white;
+            transition: all 0.3s ease;
+            border-radius: 1rem !important;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .rule-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        .example {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            border-left: 4px solid #4b5563;
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #93c5fd;
+        }
+
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .audio-example {
+            background-color: #f8fafc;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 12px 0;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .audio-example:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .custom-audio-player {
+            display: flex;
+            align-items: center;
+        }
+
+        .play-button {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            audio {
+                display: none;
+            }
+            
+            .play-button {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
+    <nav class="bg-gray-100/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="rule-card flex items-center justify-between h-16">
+                <a href="index.html" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">← Back to Home</a>
+                <h1 class="text-2xl font-bold text-gray-800">Other Important Tajweed Topics</h1>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Introduction -->
+        <div class="rule-card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Additional Tajweed Topics</h2>
+            <p class="text-gray-700">
+                Beyond the main rules covered in other sections, there are several additional important topics in Tajweed that every reciter should be aware of. This page covers special situations and rules that enhance proper Quranic recitation.
+            </p>
+        </div>
+
+        <!-- Topic 1: Saktah -->
+        <div class="topic-card">
+            <div class="bg-blue-600 text-white px-6 py-4">
+                <h2 class="text-xl font-bold">السكتة (As-Saktah)</h2>
+                <p class="text-sm mt-1">Brief Stop Without Taking Breath</p>
+            </div>
+            
+            <div class="p-6">
+                <p class="text-gray-700 mb-4">
+                    Saktah (السكتة) is a brief pause during recitation without taking a breath. It's approximately equal to two counts in length. Unlike Waqf (stopping), there is no change in the vowel sounds at the Saktah points.
+                </p>
+                
+                <h3 class="font-semibold text-gray-800 mb-2">Places of Saktah in Hafs Recitation:</h3>
+                <ul class="space-y-3">
+                    <li class="p-3 bg-gray-50 rounded-lg">
+                        <span class="font-medium">Surah Al-Kahf (18:1-2):</span>
+                        <div class="arabic text-xl mt-1">وَلَمْ يَجْعَل لَّهُ عِوَجَاۜ ۝</div>
+                        <p class="text-sm text-gray-600 mt-1">Brief pause after the word عِوَجَا</p>
+                    </li>
+                    <li class="p-3 bg-gray-50 rounded-lg">
+                        <span class="font-medium">Surah Yasin (36:52):</span>
+                        <div class="arabic text-xl mt-1">...مَرْقَدِنَاۜ</div>
+                        <p class="text-sm text-gray-600 mt-1">Brief pause after the word مَرْقَدِنَا</p>
+                    </li>
+                    <li class="p-3 bg-gray-50 rounded-lg">
+                        <span class="font-medium">Surah Al-Qiyamah (75:27):</span>
+                        <div class="arabic text-xl mt-1">وَقِيلَ مَنْ ۜرَاقٍۢ۝ </div>
+                        <p class="text-sm text-gray-600 mt-1">Brief pause after the word مَنْ</p>
+                    </li>
+                </ul>
+                
+                <div class="mt-5 p-4 bg-blue-50 rounded-lg">
+                    <h3 class="font-semibold text-blue-800 mb-2">Important Note:</h3>
+                    <p class="text-gray-700">
+                        In a Mushaf, a Saktah is indicated by a small س (seen) above where the pause should occur. The reciter should briefly pause, then continue the recitation.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 2:Imaalah -->
+        <div class="topic-card">
+            <div class="bg-green-600 text-white px-6 py-4">
+                <h2 class="text-xl font-bold">الإمالة (Al-Imaalah)</h2>
+                <p class="text-sm mt-1">Inclination</p>
+            </div>
+            
+            <div class="p-6">
+                <h3 class="font-semibold text-gray-800 mt-6 mb-3">Al-Imaalah (Inclination)</h3>
+                <p class="text-gray-700 mb-4">
+                    Al-Imaalah is the inclination of the sound of a fathah (َ) toward a kasrah (ِ), or an alif toward a yaa. In Hafs recitation, Imaalah occurs in only one word in the Quran:
+                </p>
+                
+                <div class="example">
+                    <div class="arabic text-xl">مَجْرٮٰهَا</div>
+                    <p class="text-sm text-gray-600 mt-1">In Surah Hud (11:41), the word مَجْرٮٰهَا is recited with Imaalah, where the sound of the alif is inclined somewhat toward a yaa sound.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 3: Tasheel and Tas-heel -->
+        <div class="topic-card">
+            <div class="bg-purple-600 text-white px-6 py-4">
+                <h2 class="text-xl font-bold">التسهيل (At-Tasheel)</h2>
+                <p class="text-sm mt-1">Facilitating the Hamzah</p>
+            </div>
+            
+            <div class="p-6">
+                <p class="text-gray-700 mb-4">
+                    Tasheel refers to the softening of the hamzah sound, making it easier to pronounce. It is used in specific instances in the Quran where two hamzahs meet. Instead of pronouncing both hamzahs fully, the second one is softened.
+                </p>
+                
+                <h3 class="font-semibold text-gray-800 mb-2">Examples in Hafs Recitation:</h3>
+                <ul class="space-y-3">
+                    <li class="p-3 bg-gray-50 rounded-lg">
+                        <div class="arabic text-xl">ءَا۬عْجَمِىٌّ</div>
+                        <p class="text-sm text-gray-600 mt-1">In Surah Fussilat (41:44), the second hamzah is softened.</p>
+                    </li>
+                </ul>
+                
+                <div class="mt-5 p-4 bg-purple-50 rounded-lg">
+                    <h3 class="font-semibold text-purple-800 mb-2">How to Recite:</h3>
+                    <p class="text-gray-700">
+                        To perform Tasheel, the reciter pronounces the first hamzah normally but softens the second one.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="rule-card mt-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Test Your Knowledge</h2>
+                <div class="text-gray-800">
+                    Score: <span id="quizScore" class="font-bold">0</span>/<span id="totalQuestions">0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+
+            <div id="quizContainer" class="mb-6"></div>
+            
+            <div id="feedback" class="mb-4 p-4 rounded-lg hidden"></div>
+            
+            <div class="flex justify-between">
+                <button onclick="previousQuestion()" id="prevBtn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50">Previous</button>
+                <button onclick="nextQuestion()" id="nextBtn" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Next</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Audio playback control
+        function toggleAudio(button, audioSrc) {
+            const audioElement = button.nextElementSibling;
+            
+            if (audioElement.paused) {
+                // Pause all other playing audio elements first
+                document.querySelectorAll('audio').forEach(audio => {
+                    if (!audio.paused) {
+                        audio.pause();
+                        const playButton = audio.previousElementSibling;
+                        if (playButton) {
+                            playButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+                        }
+                    }
+                });
+                
+                // Play this audio
+                audioElement.play();
+                button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+            } else {
+                // Pause this audio
+                audioElement.pause();
+                button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+            }
+        }
+
+        // Quiz questions
+        const quizQuestions = [
+            {
+                question: "What is Saktah in Tajweed?",
+                options: [
+                    "A complete stop with breathing",
+                    "A brief pause without taking a breath",
+                    "Pronouncing a letter with a nasal sound",
+                    "Substituting one letter for another"
+                ],
+                correct: 1,
+                explanation: "When a saktah is reached, the reciter must pause for atleast a brief moment, they have the choice to take a breath."
+            },
+            {
+                question: "In which surah do we find the Saktah on the word 'مَرْقَدِنَا'?",
+                options: [
+                    "Surah Al-Kahf",
+                    "Surah Yasin",
+                    "Surah Al-Qiyamah",
+                    "Surah Al-Mutaffifin"
+                ],
+                correct: 1,
+                explanation: "The Saktah on the word 'مَرْقَدِنَا' is found in Surah Yasin (36:52)."
+            },
+            {
+                question: "What is Al-Imaalah in Tajweed?",
+                options: [
+                    "The inclination of a fathah toward a kasrah",
+                    "Transferring a vowel from one letter to another",
+                    "Rounding the lips without making a sound",
+                    "Substituting a noon sakinah for a meem"
+                ],
+                correct: 0,
+                explanation: "Al-Imaalah is the inclination of the sound of a fathah (َ) toward a kasrah (ِ), or an alif toward a yaa."
+            },
+            {
+                question: "In Hafs recitation, how many places have obligatory Imaalah?",
+                options: [
+                    "None",
+                    "One",
+                    "Two",
+                    "Four"
+                ],
+                correct: 1,
+                explanation: "In Hafs recitation, Imaalah occurs in only one word in the Quran: 'مَجْرٮٰهَا' in Surah Hud (11:41)."
+            },
+            {
+                question: "What is At-Tasheel in Tajweed?",
+                options: [
+                    "Stopping on a word by partially pronouncing the final vowel",
+                    "Transferring the vowel of a hamzah to the preceding letter",
+                    "The softening of the hamzah sound to make it easier to pronounce",
+                    "Rounding the lips without making a sound when stopping"
+                ],
+                correct: 2,
+                explanation: "Tasheel refers to the softening of the hamzah sound, making it easier to pronounce, especially when two hamzahs meet."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let quizScore = 0;
+        let answeredQuestions = new Set();
+
+        function initializeQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            answeredQuestions = new Set();
+            document.getElementById('quizScore').textContent = '0';
+            document.getElementById('totalQuestions').textContent = quizQuestions.length;
+            updateProgressBar();
+            displayQuestion();
+            updateNavigationButtons();
+        }
+
+        function displayQuestion() {
+            const quiz = quizQuestions[currentQuestion];
+            const container = document.getElementById('quizContainer');
+            const isAnswered = answeredQuestions.has(currentQuestion);
+            
+            container.innerHTML = `
+                <div class="mb-6">
+                    <p class="text-xl mb-6 text-gray-800">${quiz.question}</p>
+                    <div class="options-container">
+                        ${quiz.options.map((option, index) => `
+                            <div class="quiz-option p-4 border rounded-lg mb-3" 
+                                onclick="checkAnswer(${index})" 
+                                data-index="${index}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            if (isAnswered) {
+                const options = container.querySelectorAll('.quiz-option');
+                options.forEach((option, index) => {
+                    if (index === quiz.correct) {
+                        option.classList.add('correct');
+                    }
+                });
+                
+                container.innerHTML += `
+                    <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                        <p class="font-semibold mb-2">Explanation:</p>
+                        <p>${quiz.explanation}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function checkAnswer(selected) {
+            if (answeredQuestions.has(currentQuestion)) return;
+
+            const quiz = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const selectedOption = options[selected];
+            const container = document.getElementById('quizContainer');
+            
+            if (selected === quiz.correct) {
+                selectedOption.classList.add('correct');
+                quizScore++;
+                document.getElementById('quizScore').textContent = quizScore;
+            } else {
+                selectedOption.classList.add('incorrect');
+                options[quiz.correct].classList.add('correct');
+            }
+
+            container.innerHTML += `
+                <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                    <p class="font-semibold mb-2">Explanation:</p>
+                    <p>${quiz.explanation}</p>
+                </div>
+            `;
+
+            answeredQuestions.add(currentQuestion);
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        function updateProgressBar() {
+            const progress = (answeredQuestions.size / quizQuestions.length) * 100;
+            document.querySelector('.progress-fill').style.width = `${progress}%`;
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === quizQuestions.length - 1) {
+                if (answeredQuestions.has(currentQuestion)) {
+                    nextBtn.textContent = 'Restart Quiz';
+                    nextBtn.onclick = initializeQuiz;
+                    nextBtn.disabled = false;
+                } else {
+                    nextBtn.disabled = true;
+                }
+            } else {
+                nextBtn.textContent = 'Next';
+                nextBtn.disabled = !answeredQuestions.has(currentQuestion);
+                nextBtn.onclick = nextQuestion;
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        // Initialize the quiz when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeQuiz();
+        });
+    </script>
+</body>
+</html>
+            

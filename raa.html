@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules of Raa</title>
+    <link rel="icon" href="./FrontPageTileImages/favicon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        .arabic {
+            font-family: 'Amiri', serif;
+        }
+
+        .char-card {
+            background: white;
+            transition: all 0.2s ease;
+            border-width: 3px !important;
+            border-style: solid !important;
+            border-radius: 1rem !important;
+        }
+
+        .rule-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tafkheem {
+            border-color: #3b82f6 !important;
+        }
+
+        .tarqeeq {
+            border-color: #22c55e !important;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .char-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #93c5fd;
+        }
+
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .example-group {
+            transition: background-color 0.2s ease;
+        }
+
+        .example-group:hover {
+            background-color: #f8fafc;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
+    <nav class="bg-gray-100/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="rule-card flex items-center justify-between h-16">
+                <a href="index.html" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">← Back to Home</a>
+                <h1 class="text-2xl font-bold text-gray-800">Rules of Raa (ر)</h1>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+        <!-- Main Rules Section -->
+        <section class="rule-card">
+            <h2 class="section-title text-3xl font-bold text-slate-800">Rules of Raa (ر)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Tafkheem Cases -->
+                <div class="char-card tafkheem rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-800">Tafkheem (Heavy)</h3>
+                        <span class="text-sm text-slate-500">Most Common Cases</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-blue-600 font-medium mb-1">With Fathah</h4>
+                            <div class="arabic text-xl text-slate-800">رَحِيم</div>
+                            <p class="text-sm text-slate-600 mt-2">When Raa has fathah</p>
+                        </div>
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-blue-600 font-medium mb-1">With Dhammah</h4>
+                            <div class="arabic text-xl text-slate-800">رُسُل</div>
+                            <p class="text-sm text-slate-600 mt-2">When Raa has dhammah</p>
+                        </div>
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-blue-600 font-medium mb-1">With Sukoon after Fathah</h4>
+                            <div class="arabic text-xl text-slate-800">مَرْيَم</div>
+                            <p class="text-sm text-slate-600 mt-2">When Raa has sukoon and is preceded by fathah</p>
+                        </div>
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-blue-600 font-medium mb-1">With Sukoon after Fathah</h4>
+                            <div class="arabic text-xl text-slate-800">مَرْيَم</div>
+                            <p class="text-sm text-slate-600 mt-2">When Raa has sukoon and is preceded by fathah</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarqeeq Cases -->
+                <div class="char-card tarqeeq rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-800">Tarqeeq (Light)</h3>
+                        <span class="text-sm text-slate-500">Special Cases</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-green-600 font-medium mb-1">With Kasrah</h4>
+                            <div class="arabic text-xl text-slate-800">رِجَال</div>
+                            <p class="text-sm text-slate-600 mt-2">When Raa has kasrah</p>
+                        </div>
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-green-600 font-medium mb-1">With Sukoon after Kasrah</h4>
+                            <div class="arabic text-xl text-slate-800">فِرْعَوْن</div>
+                            <p class="text-sm text-slate-600 mt-2">When Raa has sukoon and is preceded by kasrah</p>
+                        </div>
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-green-600 font-medium mb-1">Original Kasrah</h4>
+                            <div class="arabic text-xl text-slate-800">فِرَاق</div>
+                            <p class="text-sm text-slate-600 mt-2">When the original vowel is kasrah</p>
+                        </div>
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-green-600 font-medium mb-1">Original Kasrah</h4>
+                            <div class="arabic text-xl text-slate-800">فِرَاق</div>
+                            <p class="text-sm text-slate-600 mt-2">When the original vowel is kasrah</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="rule-card mt-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Test Your Knowledge</h2>
+                <div class="text-gray-800">
+                    Score: <span id="quizScore" class="font-bold">0</span>/<span id="totalQuestions">0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+
+            <div id="quizContainer" class="mb-6"></div>
+            
+            <div id="feedback" class="mb-4 p-4 rounded-lg hidden"></div>
+            
+            <div class="flex justify-between">
+                <button onclick="previousQuestion()" id="prevBtn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50">Previous</button>
+                <button onclick="nextQuestion()" id="nextBtn" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Next</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const quizQuestions = [
+            {
+                question: "How should Raa be pronounced in the word رَسُول?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on the following letter"
+                ],
+                correct: 0,
+                explanation: "The Raa has a fathah (َ), so it should be pronounced with Tafkheem (heavy pronunciation)."
+            },
+            {
+                question: "In the word فِرْعَوْن, how should the Raa be pronounced?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on the following letter"
+                ],
+                correct: 1,
+                explanation: "The Raa has a sukoon and is preceded by a kasrah (ِ), so it should be pronounced with Tarqeeq (light pronunciation)."
+            },
+            {
+                question: "How should Raa be pronounced in رِزْق?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on the following letter"
+                ],
+                correct: 1,
+                explanation: "When Raa has a kasrah (ِ), it is always pronounced with Tarqeeq (light pronunciation)."
+            },
+            {
+                question: "In the word مَرْيَم, what is the correct pronunciation of Raa?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on the following letter"
+                ],
+                correct: 0,
+                explanation: "The Raa has a sukoon and is preceded by a fathah (َ), so it should be pronounced with Tafkheem (heavy pronunciation)."
+            },
+            {
+                question: "How should the Raa be pronounced in قُرْآن?",
+                options: [
+                    "With Tarqeeq due to the following alif",
+                    "With Tafkheem due to the dhammah",
+                    "With Tarqeeq due to the sukoon",
+                    "Either way is correct"
+                ],
+                correct: 1,
+                explanation: "The Raa has a sukoon and is preceded by a dhammah (ُ), so it should be pronounced with Tafkheem (heavy pronunciation)."
+            },
+            {
+                question: "In فِرَار, how should the first Raa be pronounced?",
+                options: [
+                    "With Tafkheem due to the fathah",
+                    "With Tarqeeq due to the preceding kasrah",
+                    "With Tafkheem due to the second Raa",
+                    "Either way is correct"
+                ],
+                correct: 0,
+                explanation: "The Raa has a fathah (َ), so it should be pronounced with Tafkheem (heavy pronunciation). The kasrah on the first letter (فِ) does not affect the Raa's pronunciation."
+            },
+            {
+                question: "Analyze رُوح - what determines the pronunciation of Raa?",
+                options: [
+                    "The dhammah on the Raa",
+                    "The following واو",
+                    "Both the dhammah and واو",
+                    "The end of the word"
+                ],
+                correct: 0,
+                explanation: "The Raa has a dhammah (ُ), so it should be pronounced with Tafkheem (heavy pronunciation). The following letter doesn't affect this rule."
+            },
+            {
+                question: "How should Raa be pronounced in خَيْر?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on context"
+                ],
+                correct: 0,
+                explanation: "When Raa is at the end of a word and preceded by a letter with sukoon (in this case ي), we look at the vowel before the sukoon. Here it's a fathah (َ), so the Raa is pronounced with Tafkheem."
+            },
+            {
+    question: "How should Raa be pronounced in فِرْق?",
+    options: [
+        "With Tafkheem (heavy)",
+        "With Tarqeeq (light)",
+        "Either way is correct",
+        "Depends on the following letter"
+    ],
+    correct: 1,
+    explanation: "The Raa has sukoon and is preceded by kasrah (ِ), so it should be pronounced with Tarqeeq."
+},
+{
+    question: "In the word نَارٌ, how should the Raa be pronounced?",
+    options: [
+        "With Tafkheem due to tanween",
+        "With Tarqeeq due to preceding alif",
+        "With Tafkheem due to preceding fathah",
+        "With Tarqeeq due to position"
+    ],
+    correct: 0,
+    explanation: "When Raa has tanween dhammah (ٌ), it is always pronounced with Tafkheem."
+},
+{
+    question: "How should Raa be pronounced in صِرَاط?",
+    options: [
+        "With Tafkheem due to fathah",
+        "With Tarqeeq due to preceding kasrah",
+        "With Tafkheem due to heavy letter ط",
+        "With Tarqeeq due to position"
+    ],
+    correct: 0,
+    explanation: "The Raa has fathah (َ), so it should be pronounced with Tafkheem, regardless of the preceding kasrah."
+},
+{
+    question: "In قَدِيرٌ, what determines the pronunciation of Raa?",
+    options: [
+        "The kasrah before it",
+        "The tanween dhammah on it",
+        "The position at word end",
+        "The preceding yaa"
+    ],
+    correct: 1,
+    explanation: "When Raa has tanween dhammah (ٌ), it is always pronounced with Tafkheem, regardless of preceding letters."
+},
+{
+    question: "How should Raa be pronounced in خِنْزِير?",
+    options: [
+        "With Tafkheem (heavy)",
+        "With Tarqeeq (light)",
+        "Either way is correct",
+        "Depends on context"
+    ],
+    correct: 1,
+    explanation: "When Raa is preceded by a permanent kasrah (as in the yaa with kasrah), it is pronounced with Tarqeeq."
+},
+{
+    question: "In شَرَر, how are both Raa letters pronounced?",
+    options: [
+        "Both with Tafkheem",
+        "Both with Tarqeeq",
+        "First Tafkheem, second Tarqeeq",
+        "First Tarqeeq, second Tafkheem"
+    ],
+    correct: 0,
+    explanation: "Both Raa letters have fathah (َ), so they should both be pronounced with Tafkheem."
+},
+{
+    question: "How should Raa be pronounced in إِرْسَال?",
+    options: [
+        "With Tafkheem due to following seen",
+        "With Tarqeeq due to preceding kasrah",
+        "With Tafkheem due to following fathah",
+        "Either way is correct"
+    ],
+    correct: 1,
+    explanation: "The Raa has sukoon and is preceded by kasrah (ِ), so it should be pronounced with Tarqeeq."
+},
+{
+    question: "How should Raa be pronounced in the word رِضْوَان?",
+    options: [
+        "With Tafkheem (heavy)",
+        "With Tarqeeq (light)",
+        "Either way is correct",
+        "Depends on the following letter"
+    ],
+    correct: 1,
+    explanation: "The Raa has a kasrah (ِ), so it should be pronounced with Tarqeeq (light pronunciation), regardless of the following letters."
+},
+{
+    question: "In مُدَّكِر, how should the Raa at the end be pronounced?",
+    options: [
+        "With Tafkheem (heavy)",
+        "With Tarqeeq (light)",
+        "Either way is correct",
+        "Depends on context"
+    ],
+    correct: 1,
+    explanation: "When Raa comes after a permanent kasrah, even if it's not directly connected, it is pronounced with Tarqeeq."
+}
+        ];
+
+        let currentQuestion = 0;
+        let quizScore = 0;
+        let answeredQuestions = new Set();
+
+        function initializeQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            answeredQuestions = new Set();
+            document.getElementById('quizScore').textContent = '0';
+            document.getElementById('totalQuestions').textContent = quizQuestions.length;
+            updateProgressBar();
+            displayQuestion();
+            updateNavigationButtons();
+        }
+
+        function displayQuestion() {
+            const quiz = quizQuestions[currentQuestion];
+            const container = document.getElementById('quizContainer');
+            const isAnswered = answeredQuestions.has(currentQuestion);
+            
+            container.innerHTML = `
+                <div class="mb-6">
+                    <p class="text-xl mb-6 text-gray-800">${quiz.question}</p>
+                    <div class="options-container">
+                        ${quiz.options.map((option, index) => `
+                            <div class="quiz-option p-4 border rounded-lg mb-3" 
+                                onclick="checkAnswer(${index})" 
+                                data-index="${index}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            if (isAnswered) {
+                const options = container.querySelectorAll('.quiz-option');
+                options.forEach((option, index) => {
+                    if (index === quiz.correct) {
+                        option.classList.add('correct');
+                    }
+                });
+                
+                container.innerHTML += `
+                    <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                        <p class="font-semibold mb-2">Explanation:</p>
+                        <p>${quiz.explanation}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function checkAnswer(selected) {
+            if (answeredQuestions.has(currentQuestion)) return;
+
+            const quiz = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const selectedOption = options[selected];
+            const container = document.getElementById('quizContainer');
+            
+            if (selected === quiz.correct) {
+                selectedOption.classList.add('correct');
+                quizScore++;
+                document.getElementById('quizScore').textContent = quizScore;
+            } else {
+                selectedOption.classList.add('incorrect');
+                options[quiz.correct].classList.add('correct');
+            }
+
+            container.innerHTML += `
+                <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                    <p class="font-semibold mb-2">Explanation:</p>
+                    <p>${quiz.explanation}</p>
+                </div>
+            `;
+
+            answeredQuestions.add(currentQuestion);
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        function updateProgressBar() {
+            const progress = (answeredQuestions.size / quizQuestions.length) * 100;
+            document.querySelector('.progress-fill').style.width = `${progress}%`;
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === quizQuestions.length - 1) {
+                if (answeredQuestions.has(currentQuestion)) {
+                    nextBtn.textContent = 'Restart Quiz';
+                    nextBtn.onclick = initializeQuiz;
+                    nextBtn.disabled = false;
+                } else {
+                    nextBtn.disabled = true;
+                }
+            } else {
+                nextBtn.textContent = 'Next';
+                nextBtn.disabled = !answeredQuestions.has(currentQuestion);
+                nextBtn.onclick = nextQuestion;
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        // Initialize the quiz when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeQuiz();
+        });
+    </script>
+</body>
+</html>

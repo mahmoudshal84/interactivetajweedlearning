@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting of Letters (الحرفان الملتقيان) in Quranic Recitation</title>
+    <link rel="icon" href="./FrontPageTileImages/favicon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        .arabic {
+            font-family: 'Amiri', serif;
+        }
+
+        /* 
+        Commented out styles
+        .char-card {
+            background: white;
+            transition: all 0.2s ease;
+            border-width: 3px !important;
+            border-style: solid !important;
+            border-radius: 1rem !important;
+        }
+
+        .rule-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #93c5fd;
+        }
+
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .identical-letters {
+            border-color: #3b82f6 !important;
+        }
+
+        .similar-letters {
+            border-color: #22c55e !important;
+        }
+
+        .close-letters {
+            border-color: #f59e0b !important;
+        }
+
+        .far-letters {
+            border-color: #ef4444 !important;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #e2e8f0;
+        }
+        */
+
+        /* Added styles for maintenance message */
+        .maintenance-container {
+            background-color: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 100px auto;
+            max-width: 800px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 3px solid #D4AF37;
+        }
+        
+        .maintenance-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
+    <!-- Kept navigation but simplified -->
+    <nav class="bg-gray-100/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16 bg-white rounded-lg shadow-sm px-6">
+                <a href="index.html" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">← Back to Home</a>
+                <h1 class="text-2xl font-bold text-gray-800">Meeting of Letters (الحرفان الملتقيان)</h1>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Maintenance message -->
+        <div class="maintenance-container">
+            <div class="maintenance-icon">🚧</div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">This Page is Currently Being Worked On</h2>
+            <p class="text-xl text-gray-600 mb-6">We're making improvements to this content about Meeting of Letters (الحرفان الملتقيان) in Quranic Recitation.</p>
+            <p class="text-lg text-gray-500">Please check back soon for the updated information.</p>
+            <div class="mt-8">
+                <a href="index.html" class="px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Return to Home</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 
+    Commented out all scripts
+    <script>
+        const quizQuestions = [
+            {
+                question: "What happens when two identical letters meet in Idgham?",
+                options: [
+                    "They are pronounced separately",
+                    "They merge completely into one emphasized letter",
+                    "One letter is dropped",
+                    "They are pronounced quickly"
+                ],
+                correct: 1,
+                explanation: "When two identical letters meet (الحرفان المتماثلان), they merge completely into one emphasized letter with a shaddah."
+            },
+            {
+                question: "In the phrase 'مَن نَّصِيرٍ', what type of letter meeting occurs?",
+                options: [
+                    "Far letters",
+                    "Close letters",
+                    "Identical letters",
+                    "Similar letters"
+                ],
+                correct: 2,
+                explanation: "This is an example of identical letters (متماثلان) where two noon letters meet and merge."
+            },
+            {
+                question: "What is the ruling for 'قَد تَّبَيَّنَ'?",
+                options: [
+                    "No merging occurs",
+                    "Partial merging of similar letters",
+                    "Complete separation",
+                    "Optional merging"
+                ],
+                correct: 1,
+                explanation: "This is an example of similar letters (متجانسان) where dal and ta share similar attributes and undergo partial merging."
+            },
+            {
+                question: "How should letters with distant articulation points be pronounced?",
+                options: [
+                    "Merged completely",
+                    "Partially merged",
+                    "Each letter pronounced clearly",
+                    "One letter is silent"
+                ],
+                correct: 2,
+                explanation: "Far letters (متباعدان) should be pronounced clearly and distinctly with no merging."
+            },
+            {
+                question: "In 'قُل رَّبِّ', what type of letter meeting occurs?",
+                options: [
+                    "Close letters",
+                    "Identical letters",
+                    "Far letters",
+                    "No meeting"
+                ],
+                correct: 0,
+                explanation: "This is an example of close letters (متقاربان) where lam and ra have nearby articulation points."
+            },
+            {
+                question: "What is the primary characteristic of similar letters (المتجانسان)?",
+                options: [
+                    "Same exact pronunciation",
+                    "Different articulation points",
+                    "Share similar attributes in pronunciation",
+                    "No relationship in sound"
+                ],
+                correct: 2,
+                explanation: "Similar letters (متجانسان) share attributes in their pronunciation while maintaining some distinct characteristics."
+            },
+            {
+                question: "How are far letters (المتباعدان) identified?",
+                options: [
+                    "By their similar sounds",
+                    "By their distant articulation points",
+                    "By their identical pronunciation",
+                    "By their written form"
+                ],
+                correct: 1,
+                explanation: "Far letters are identified by having distant articulation points in the mouth, throat, or lips."
+            },
+            {
+                question: "What happens in the phrase 'همَّت طَّائِفَةٌ'?",
+                options: [
+                    "No merging",
+                    "Complete separation",
+                    "Partial merging of similar letters",
+                    "Full merging"
+                ],
+                correct: 2,
+                explanation: "This is an example where similar letters undergo partial merging while maintaining some of their distinct characteristics."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let quizScore = 0;
+        let answeredQuestions = new Set();
+
+        function initializeQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            answeredQuestions = new Set();
+            document.getElementById('quizScore').textContent = '0';
+            document.getElementById('totalQuestions').textContent = quizQuestions.length;
+            updateProgressBar();
+            displayQuestion();
+            updateNavigationButtons();
+        }
+
+        function displayQuestion() {
+            const quiz = quizQuestions[currentQuestion];
+            const container = document.getElementById('quizContainer');
+            const isAnswered = answeredQuestions.has(currentQuestion);
+            
+            container.innerHTML = `
+                <div class="mb-6">
+                    <p class="text-xl font-semibold text-slate-800 mb-6">${quiz.question}</p>
+                    <div class="options-container">
+                        ${quiz.options.map((option, index) => `
+                            <div class="quiz-option p-4 border rounded-lg mb-3" 
+                                onclick="checkAnswer(${index})" 
+                                data-index="${index}">
+                                <div class="text-lg text-slate-800">${option}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            if (isAnswered) {
+                const options = container.querySelectorAll('.quiz-option');
+                options.forEach((option, index) => {
+                    if (index === quiz.correct) {
+                        option.classList.add('correct');
+                    }
+                });
+                
+                container.innerHTML += `
+                    <div class="p-4 bg-blue-50 rounded-lg text-slate-700 mb-4">
+                        <p class="font-semibold mb-2">Explanation:</p>
+                        <p class="text-lg">${quiz.explanation}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function checkAnswer(selected) {
+            if (answeredQuestions.has(currentQuestion)) return;
+
+            const quiz = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const selectedOption = options[selected];
+            const container = document.getElementById('quizContainer');
+            
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+                option.style.transition = 'all 0.3s ease';
+            });
+            
+            if (selected === quiz.correct) {
+                selectedOption.classList.add('correct');
+                selectedOption.querySelector('div').style.color = '#052e16';
+                quizScore++;
+                document.getElementById('quizScore').textContent = quizScore;
+            } else {
+                selectedOption.classList.add('incorrect');
+                selectedOption.querySelector('div').style.color = '#450a0a';
+                const correctOption = options[quiz.correct];
+                correctOption.classList.add('correct');
+                correctOption.querySelector('div').style.color = '#052e16';
+            }
+
+            container.innerHTML += `
+                <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                    <p class="font-semibold mb-2">Explanation:</p>
+                    <p>${quiz.explanation}</p>
+                </div>
+            `;
+
+            answeredQuestions.add(currentQuestion);
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        function updateProgressBar() {
+            const progress = (answeredQuestions.size / quizQuestions.length) * 100;
+            document.querySelector('.progress-fill').style.width = `${progress}%`;
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === quizQuestions.length - 1) {
+                if (answeredQuestions.has(currentQuestion)) {
+                    nextBtn.textContent = 'Restart Quiz';
+                    nextBtn.onclick = function() {
+                        initializeQuiz();
+                    };
+                    nextBtn.disabled = false;
+                } else {
+                    nextBtn.disabled = true;
+                    nextBtn.textContent = 'Next';
+                }
+            } else {
+                nextBtn.textContent = 'Next';
+                nextBtn.disabled = !answeredQuestions.has(currentQuestion);
+                nextBtn.onclick = function() {
+                    nextQuestion();
+                };
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        // Initialize quiz when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeQuiz();
+        });
+    </script>
+    -->
+</body>
+</html>

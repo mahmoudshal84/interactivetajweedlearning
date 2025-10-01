@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lafth-ul-Jalalah (الله) Rules</title>
+    <link rel="icon" href="./FrontPageTileImages/favicon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        .arabic {
+            font-family: 'Amiri', serif;
+        }
+
+        .char-card {
+            background: white;
+            transition: all 0.2s ease;
+            border-width: 3px !important;
+            border-style: solid !important;
+            border-radius: 1rem !important;
+        }
+
+        .rule-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tafkheem {
+            border-color: #3b82f6 !important;
+        }
+
+        .tarqeeq {
+            border-color: #22c55e !important;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .char-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #93c5fd;
+        }
+
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .example-group {
+            transition: background-color 0.2s ease;
+        }
+
+        .example-group:hover {
+            background-color: #f8fafc;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
+    <nav class="bg-gray-100/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="rule-card flex items-center justify-between h-16">
+                <a href="index.html" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">← Back to Home</a>
+                <h1 class="text-2xl font-bold text-gray-800">Lafth-ul-Jalalah (الله) Rules</h1>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+        <!-- Main Rules Section -->
+        <section class="rule-card">
+            <h2 class="section-title text-3xl font-bold text-slate-800">Rules of Lafth-ul-Jalalah (الله)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Tafkheem Case -->
+                <div class="char-card tafkheem rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-800">Tafkheem (Heavy)</h3>
+                        <span class="text-sm text-slate-500">After Fathah/Dhammah</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-blue-600 font-medium mb-1">After Fathah</h4>
+                            <div class="arabic text-xl text-slate-800">قَالَ اللّه</div>
+                            <p class="text-sm text-slate-600 mt-2">When preceded by fathah, pronounce Allah heavily</p>
+                        </div>
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-blue-600 font-medium mb-1">After Dhammah</h4>
+                            <div class="arabic text-xl text-slate-800">رَسُولُ اللّه</div>
+                            <p class="text-sm text-slate-600 mt-2">When preceded by dhammah, pronounce Allah heavily</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarqeeq Case -->
+                <div class="char-card tarqeeq rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-800">Tarqeeq (Light)</h3>
+                        <span class="text-sm text-slate-500">After Kasrah</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-green-600 font-medium mb-1">After Kasrah</h4>
+                            <div class="arabic text-xl text-slate-800">بِسْمِ اللّه</div>
+                            <p class="text-sm text-slate-600 mt-2">When preceded by kasrah, pronounce Allah lightly</p>
+                        </div>
+                        <div class="example-group p-3 rounded">
+                            <h4 class="text-green-600 font-medium mb-1">Another Example</h4>
+                            <div class="arabic text-xl text-slate-800">لِله</div>
+                            <p class="text-sm text-slate-600 mt-2">When connected with kasrah, pronounce Allah lightly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="rule-card mt-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Test Your Knowledge</h2>
+                <div class="text-gray-800">
+                    Score: <span id="quizScore" class="font-bold">0</span>/<span id="totalQuestions">0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+
+            <div id="quizContainer" class="mb-6"></div>
+            
+            <div id="feedback" class="mb-4 p-4 rounded-lg hidden"></div>
+            
+            <div class="flex justify-between">
+                <button onclick="previousQuestion()" id="prevBtn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50">Previous</button>
+                <button onclick="nextQuestion()" id="nextBtn" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Next</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const quizQuestions = [
+            {
+                question: "How should Lafth-ul-Jalalah be pronounced in the phrase: عَبْدُ الله",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "None of the above"
+                ],
+                correct: 0,
+                explanation: "In عَبْدُ الله, Allah is preceded by a dhammah (  ُ ), so it should be pronounced with Tafkheem (heavy pronunciation)."
+            },
+            {
+                question: "In the phrase بِسْمِ الله الرَّحْمٰنِ الرَّحِيْم, how should Allah be pronounced?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "None of the above"
+                ],
+                correct: 1,
+                explanation: "In بِسْمِ الله, Allah is preceded by a kasrah  (  ِ ) , so it should be pronounced with Tarqeeq (light pronunciation)."
+            },
+            {
+                question: "Identify the correct pronunciation for Allah in: وَاللهُ أَكْبَر",
+                options: [
+                    "With Tarqeeq (light)",
+                    "With Tafkheem (heavy)",
+                    "Either way is correct",
+                    "Depends on the next word"
+                ],
+                correct: 1,
+                explanation: "In وَاللهُ, Allah is preceded by a fathah (  َ ), so it must be pronounced with Tafkheem (heavy pronunciation)."
+            },
+            {
+                question: "How should Allah be pronounced in: قُلِ اللهُمَّ",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on the next word"
+                ],
+                correct: 1,
+                explanation: "In قُلِ اللهُمَّ, Allah is preceded by a kasrah (  ِ ), so it should be pronounced with Tarqeeq (light pronunciation)."
+            },
+            {
+                question: "In the phrase شَهِدَ الله, identify the correct pronunciation rule:",
+                options: [
+                    "Tarqeeq because of the previous kasrah in دَ",
+                    "Tafkheem because of the fathah in دَ",
+                    "Either pronunciation is acceptable",
+                    "Depends on the next word"
+                ],
+                correct: 1,
+                explanation: "In شَهِدَ الله, Allah is preceded by a fathah (  َ ) in دَ, so it must be pronounced with Tafkheem (heavy pronunciation), regardless of the kasrah in هِ."
+            },
+            {
+                question: "Analyze the phrase: لِله الحَمْد - How should Allah be pronounced?",
+                options: [
+                    "With Tafkheem due to the following alif",
+                    "With Tarqeeq due to the kasrah",
+                    "With Tafkheem due to the laam before it",
+                    "Either way is correct"
+                ],
+                correct: 1,
+                explanation: "In لِله, Allah is connected to a kasrah (  ِ ), so it should be pronounced with Tarqeeq (light pronunciation). The following alif doesn't affect this rule."
+            },
+            {
+                question: "In سُبْحَانَ الله, what determines the pronunciation of Allah?",
+                options: [
+                    "The dhammah at the beginning of the word",
+                    "The fathah before Allah",
+                    "The alif before Allah",
+                    "The last letter of the word"
+                ],
+                correct: 1,
+                explanation: "In سُبْحَانَ الله, Allah is preceded by a fathah (  َ ), so it should be pronounced with Tafkheem (heavy pronunciation). Only the immediately preceding vowel determines the pronunciation."
+            },
+            {
+                question: "How should Allah be pronounced in: اِلَى الله",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on context"
+                ],
+                correct: 0,
+                explanation: "In اِلَى الله, Allah is preceded by a fathah (  َ ) in ى, so it should be pronounced with Tafkheem (heavy pronunciation). The initial kasrah in اِ doesn't affect the rule."
+            },
+            {
+                question: "When reciting قَدْ سَمِعَ اللهُ, Allah comes after multiple vowels. What determines its pronunciation?",
+                options: [
+                    "The kasrah in سَمِعَ",
+                    "The fathah in the letter before Allah",
+                    "The dhammah at the end of Allah",
+                    "The first vowel in the phrase"
+                ],
+                correct: 1,
+                explanation: "In قَدْ سَمِعَ اللهُ, only the vowel immediately before Allah (the fathah in عَ) determines its pronunciation. Therefore, Allah should be pronounced with Tafkheem (heavy pronunciation)."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let quizScore = 0;
+        let answeredQuestions = new Set();
+
+        function initializeQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            answeredQuestions = new Set();
+            document.getElementById('quizScore').textContent = '0';
+            document.getElementById('totalQuestions').textContent = quizQuestions.length;
+            updateProgressBar();
+            displayQuestion();
+            updateNavigationButtons();
+        }
+
+        function displayQuestion() {
+            const quiz = quizQuestions[currentQuestion];
+            const container = document.getElementById('quizContainer');
+            const isAnswered = answeredQuestions.has(currentQuestion);
+            
+            container.innerHTML = `
+                <div class="mb-6">
+                    <p class="text-xl mb-6 text-gray-800">${quiz.question}</p>
+                    <div class="options-container">
+                        ${quiz.options.map((option, index) => `
+                            <div class="quiz-option p-4 border rounded-lg mb-3" 
+                                onclick="checkAnswer(${index})" 
+                                data-index="${index}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            if (isAnswered) {
+                const options = container.querySelectorAll('.quiz-option');
+                options.forEach((option, index) => {
+                    if (index === quiz.correct) {
+                        option.classList.add('correct');
+                    }
+                });
+                
+                container.innerHTML += `
+                    <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                        <p class="font-semibold mb-2">Explanation:</p>
+                        <p>${quiz.explanation}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function checkAnswer(selected) {
+            if (answeredQuestions.has(currentQuestion)) return;
+
+            const quiz = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const selectedOption = options[selected];
+            const container = document.getElementById('quizContainer');
+            
+            if (selected === quiz.correct) {
+                selectedOption.classList.add('correct');
+                quizScore++;
+                document.getElementById('quizScore').textContent = quizScore;
+            } else {
+                selectedOption.classList.add('incorrect');
+                options[quiz.correct].classList.add('correct');
+            }
+
+            container.innerHTML += `
+                <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                    <p class="font-semibold mb-2">Explanation:</p>
+                    <p>${quiz.explanation}</p>
+                </div>
+            `;
+
+            answeredQuestions.add(currentQuestion);
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        function updateProgressBar() {
+            const progress = (answeredQuestions.size / quizQuestions.length) * 100;
+            document.querySelector('.progress-fill').style.width = `${progress}%`;
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === quizQuestions.length - 1) {
+                if (answeredQuestions.has(currentQuestion)) {
+                    nextBtn.textContent = 'Restart Quiz';
+                    nextBtn.onclick = initializeQuiz;
+                    nextBtn.disabled = false;  // Ensure the button is enabled
+                } else {
+                    nextBtn.disabled = true;
+                }
+            } else {
+                nextBtn.textContent = 'Next';
+                nextBtn.disabled = !answeredQuestions.has(currentQuestion);
+                nextBtn.onclick = nextQuestion;
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        // Initialize the quiz when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeQuiz();
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Tajweed Quiz</title>
+    <link rel="icon" href="./FrontPageTileImages/favicon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+            background-image: url('./FrontPageTileImages/islamicbackg.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+        }
+
+        .quiz-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            border: 2px solid #D4AF37;
+            transition: all 0.3s ease;
+        }
+
+        .topic-header {
+            background-color: #f8f4e5;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #D4AF37;
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #93c5fd;
+        }
+
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .explanation-box {
+            background-color: #f0f9ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        #results-display {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 3px solid #D4AF37;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #D4AF37, #8B4513);
+        }
+
+        @media (max-width: 640px) {
+            .quiz-card {
+                padding: 15px;
+                margin: 10px;
+                width: 95%;
+            }
+            
+            .quiz-option {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-lg sticky top-0 z-50 w-full">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">← Back to Home</a>
+                <h1 class="text-2xl font-bold text-gray-800">Comprehensive Tajweed Quiz</h1>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="quiz-card" id="quiz-container">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Mastering Tajweed</h2>
+                <div class="text-gray-800">
+                    Question: <span id="currentQuestion" class="font-bold">1</span>/<span id="totalQuestions">0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+
+            <div id="question-container" class="mb-6"></div>
+            
+            <div id="feedback" class="explanation-box hidden mb-4"></div>
+            
+            <div class="flex justify-between">
+                <button id="prevBtn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50">Previous</button>
+                <button id="nextBtn" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Next</button>
+            </div>
+        </div>
+
+        <div id="results-display" class="hidden mt-8"></div>
+    </div>
+
+    <script>
+        const quizQuestions = [
+            // Makharij (Places of Articulation) Questions
+            {
+                topic: "Places of Articulation (Makharij)",
+                question: "Which letters are pronounced from Al Jauf (the empty space in the mouth)?",
+                options: [
+                    "ا و ي",
+                    "ء ه",
+                    "غ خ",
+                    "ق ك"
+                ],
+                correct: 0,
+                explanation: "The letters ا و ي when assigned a sukoon and preceded by their respective vowel/harakah (alif maddiyah, waaw maddiyah, yaa maddiyah) are pronounced from Al Jauf (the empty space in the mouth)."
+            },
+            {
+                topic: "Places of Articulation (Makharij)",
+                question: "Which letters are pronounced from the deepest part of the throat?",
+                options: [
+                    "ا و ي",
+                    "ء ه",
+                    "غ خ",
+                    "ق ك"
+                ],
+                correct: 1,
+                explanation: "The letters ء (hamza) and ه (ha) are pronounced from the deepest part of the throat (aqsa al-halq)."
+            },
+            {
+                topic: "Places of Articulation (Makharij)",
+                question: "From which part of the throat are the letters ع and ح pronounced?",
+                options: [
+                    "Deepest part",
+                    "Middle part",
+                    "Closest part",
+                    "None of the above"
+                ],
+                correct: 1,
+                explanation: "The letters ع ('ayn) and ح (ha) are pronounced from the middle part of the throat (wasat al-halq)."
+            },
+            {
+                topic: "Places of Articulation (Makharij)",
+                question: "Which letters are pronounced from the closest part of the throat?",
+                options: [
+                    "ء ه",
+                    "ع ح",
+                    "غ خ",
+                    "ق ك"
+                ],
+                correct: 2,
+                explanation: "The letters غ (ghayn) and خ (kha) are pronounced from the closest part of the throat (adna al-halq)."
+            },
+            {
+                topic: "Places of Articulation (Makharij)",
+                question: "Which letter is pronounced from the base of the tongue meeting the soft palate?",
+                options: [
+                    "ك",
+                    "ق",
+                    "غ",
+                    "ع"
+                ],
+                correct: 1,
+                explanation: "The letter ق (qaf) is pronounced from the base of the tongue meeting with the soft palate."
+            },
+            {
+                topic: "Places of Articulation (Makharij)",
+                question: "Which group of letters is pronounced from the tongue touching the hard palate?",
+                options: [
+                    "ج ش ي",
+                    "ط د ت",
+                    "ظ ذ ث",
+                    "و م ب"
+                ],
+                correct: 0,
+                explanation: "The letters ج ش ي (jeem, sheen, ya) are pronounced from the tongue touching the hard palate (Shajariyah letters)."
+            },
+            {
+                topic: "Places of Articulation (Makharij)",
+                question: "Which letters are pronounced using both lips?",
+                options: [
+                    "و م ب",
+                    "ف",
+                    "ظ ذ ث",
+                    "ط د ت"
+                ],
+                correct: 0,
+                explanation: "The letters و م ب (waw, meem, ba) are pronounced using both lips (Shafawiyyah letters)."
+            },
+            
+            // Characteristics of Letters (Sifaat) Questions
+            {
+                topic: "Characteristics of Letters (Sifaat)",
+                question: "Which letters have the characteristic of Qalqalah?",
+                options: [
+                    "ف ر م ن ل ب",
+                    "ق ط ب ج د",
+                    "ص س ز",
+                    "و ي"
+                ],
+                correct: 1,
+                explanation: "The Qalqalah letters are ق ط ب ج د, which produce a bouncing sound when they have sukoon."
+            },
+            {
+                topic: "Characteristics of Letters (Sifaat)",
+                question: "Which characteristic describes a whistling sound during pronunciation?",
+                options: ["Safir", "Leen", "Inhiraf", "Tafashi"],
+                correct: 0,
+                explanation: "Safir is the characteristic that produces a whistling sound, found in the letters ص س ز."
+            },
+            {
+                topic: "Characteristics of Letters (Sifaat)",
+                question: "What is the defining feature of Isti'la letters?",
+                options: [
+                    "Continuous flow of sound",
+                    "Raising of the rear-most part of the tongue",
+                    "Bouncing sound",
+                    "Nasal resonance"
+                ],
+                correct: 1,
+                explanation: "Isti'la is characterized by the raising of the deepest part of the tongue during pronunciation, found in letters خ ص ض ط ظ غ ق."
+            },
+            {
+                topic: "Characteristics of Letters (Sifaat)",
+                question: "Which characteristic involves complete blockage of sound?",
+                options: ["Rakhawa", "Jahr", "Shiddah", "Hams"],
+                correct: 2,
+                explanation: "Shiddah involves complete blockage of sound, found in letters أ ج د ق ط ب ك ت."
+            },
+            {
+                topic: "Characteristics of Letters (Sifaat)",
+                question: "What is special about letters with the Itbaq characteristic?",
+                options: [
+                    "They have a whistling sound",
+                    "The tongue covers the ceiling of mouth",
+                    "They have light pronunciation",
+                    "They have continuous airflow"
+                ],
+                correct: 1,
+                explanation: "Itbaq letters (ص ض ط ظ) are pronounced with the tongue covering the ceiling of the mouth."
+            },
+            {
+                topic: "Characteristics of Letters (Sifaat)",
+                question: "Which single letter has the characteristic of Istitaalah?",
+                options: ["ر", "ش", "ض", "ل"],
+                correct: 2,
+                explanation: "Only the letter ض has the characteristic of Istitaalah, producing an elongated sound from either side of the tongue."
+            },
+            {
+                topic: "Characteristics of Letters (Sifaat)",
+                question: "Which letters are characterized by Leen?",
+                options: [
+                    "ص س ز",
+                    "و ي",
+                    "م ن",
+                    "ق ط ب"
+                ],
+                correct: 1,
+                explanation: "Leen applies to و and ي when they have a sukoon and are preceded by a fathah, resulting in a soft pronunciation."
+            },
+            <!--
+            // Meeting of Letters (Alharfan) Questions
+            {
+                topic: "Meeting of Letters (Alharfan)",
+                question: "What happens when two identical letters meet in Idgham?",
+                options: [
+                    "They are pronounced separately",
+                    "They merge completely into one emphasized letter",
+                    "One letter is dropped",
+                    "They are pronounced quickly"
+                ],
+                correct: 1,
+                explanation: "When two identical letters meet (الحرفان المتماثلان), they merge completely into one emphasized letter with a shaddah."
+            },
+            {
+                topic: "Meeting of Letters (Alharfan)",
+                question: "In the phrase 'مَن نَّصِيرٍ', what type of letter meeting occurs?",
+                options: [
+                    "Far letters",
+                    "Close letters",
+                    "Identical letters",
+                    "Similar letters"
+                ],
+                correct: 2,
+                explanation: "This is an example of identical letters (متماثلان) where two noon letters meet and merge."
+            },
+            {
+                topic: "Meeting of Letters (Alharfan)",
+                question: "What is the ruling for 'قَد تَّبَيَّنَ'?",
+                options: [
+                    "No merging occurs",
+                    "Partial merging of similar letters",
+                    "Complete separation",
+                    "Optional merging"
+                ],
+                correct: 1,
+                explanation: "This is an example of similar letters (متجانسان) where dal and ta share similar attributes and undergo partial merging."
+            },
+            {
+                topic: "Meeting of Letters (Alharfan)",
+                question: "How should letters with distant articulation points be pronounced?",
+                options: [
+                    "Merged completely",
+                    "Partially merged",
+                    "Each letter pronounced clearly",
+                    "One letter is silent"
+                ],
+                correct: 2,
+                explanation: "Far letters (متباعدان) should be pronounced clearly and distinctly with no merging."
+            },
+            {
+                topic: "Meeting of Letters (Alharfan)",
+                question: "In 'قُل رَّبِّ', what type of letter meeting occurs?",
+                options: [
+                    "Close letters",
+                    "Identical letters",
+                    "Far letters",
+                    "No meeting"
+                ],
+                correct: 0,
+                explanation: "This is an example of close letters (متقاربان) where lam and ra have nearby articulation points."
+            },
+            {
+                topic: "Meeting of Letters (Alharfan)",
+                question: "What is the primary characteristic of similar letters (المتجانسان)?",
+                options: [
+                    "Same exact pronunciation",
+                    "Different articulation points",
+                    "Share similar attributes in pronunciation",
+                    "No relationship in sound"
+                ],
+                correct: 2,
+                explanation: "Similar letters (متجانسان) share attributes in their pronunciation while maintaining some distinct characteristics."
+            },
+            {
+                topic: "Meeting of Letters (Alharfan)",
+                question: "How are far letters (المتباعدان) identified?",
+                options: [
+                    "By their similar sounds",
+                    "By their distant articulation points",
+                    "By their identical pronunciation",
+                    "By their written form"
+                ],
+                correct: 1,
+                explanation: "Far letters are identified by having distant articulation points in the mouth, throat, or lips."
+            },
+            -->
+
+            // Rules of Noon Sakinah and Tanween (Ahkamun Nun) Questions
+            {
+                topic: "Rules of Noon Sakinah & Tanween",
+                question: "Which rule applies when noon sakinah is followed by the letter ب?",
+                options: ["Idhhar", "Idghaam", "Iqlab", "Ikhfaa"],
+                correct: 2,
+                explanation: "When noon sakinah meets ب (ba), it changes to a مْ (meem) sound with ghunnah. This is called Iqlab."
+            },
+            {
+                topic: "Rules of Noon Sakinah & Tanween",
+                question: "Which letters are associated with Idhhar?",
+                options: [
+                    "ي ر م ل و ن",
+                    "ء ه ع ح غ خ",
+                    "ب",
+                    "The remaining letters"
+                ],
+                correct: 1,
+                explanation: "Idhhar occurs with the throat letters (ء ه ع ح غ خ). The noon sound is pronounced clearly when any of these 6 letters come after it."
+            },
+            {
+                topic: "Rules of Noon Sakinah & Tanween",
+                question: "Which letters are associated with Idghaam?",
+                options: [
+                    "ي ر م ل و ن",
+                    "ء ه ع ح غ خ",
+                    "ب",
+                    "The remaining letters"
+                ],
+                correct: 0,
+                explanation: "Idghaam occurs with the letters (ي ر م ل و ن). The noon sakinah is merged with these letters such that no hint of noon is pronounced."
+            },
+            {
+                topic: "Rules of Noon Sakinah & Tanween",
+                question: "In the word مِن رَبِّهِمْ, which rule is applied?",
+                options: ["Idhhar", "Idghaam", "Iqlab", "Ikhfaa"],
+                correct: 1,
+                explanation: "When noon sakinah meets ر (ra), it merges into it without ghunnah. This is Idghaam without ghunnah."
+            },
+            {
+                topic: "Rules of Noon Sakinah & Tanween",
+                question: "Which letters have Idghaam WITH ghunnah?",
+                options: [
+                    "ل ر",
+                    "ي ن م و",
+                    "ء ه ع ح غ خ",
+                    "ب"
+                ],
+                correct: 1,
+                explanation: "The letters ي ن م و have Idghaam with ghunnah, while ل ر have Idghaam without ghunnah."
+            },
+            {
+                topic: "Rules of Noon Sakinah & Tanween",
+                question: "In the word كُنتُمْ, which rule is being applied?",
+                options: ["Idhhar", "Idghaam", "Iqlab", "Ikhfaa"],
+                correct: 3,
+                explanation: "When noon sakinah meets ت (ta), it is hidden and pronounced with a ghunnah of 2 counts. This is Ikhfaa."
+            },
+            {
+                topic: "Rules of Noon Sakinah & Tanween",
+                question: "Which rule has the most letters associated with it?",
+                options: ["Idhhar", "Idghaam", "Iqlab", "Ikhfaa"],
+                correct: 3,
+                explanation: "Ikhfaa has a total of 15 letters."
+            },
+            
+            // Rules of Meem Sakinah (Ahkam Meem) Questions
+            {
+                topic: "Rules of Meem Sakinah",
+                question: "What happens when meem sakinah meets another meem?",
+                options: ["Clear pronunciation", "Merging with ghunnah", "Hidden pronunciation", "No pronunciation"],
+                correct: 1,
+                explanation: "When meem sakinah meets another meem, it merges with ghunnah (Idghaam Shafawi)."
+            },
+            {
+                topic: "Rules of Meem Sakinah",
+                question: "What is the rule when meem sakinah is followed by the letter ب?",
+                options: ["Idghaam Shafawi", "Ikhfaa Shafawi", "Idhhaar Shafawi", "No specific rule"],
+                correct: 1,
+                explanation: "When meem sakinah meets ب (ba), it is pronounced as a meem along with ghunnah of 2 counts (Ikhfaa Shafawi)."
+            },
+            {
+                topic: "Rules of Meem Sakinah",
+                question: "In the word هُم بِهِ, which rule is applied?",
+                options: ["Idghaam Shafawi", "Ikhfaa Shafawi", "Idhhaar Shafawi", "No rule"],
+                correct: 1,
+                explanation: "In هُمْ بِهِ, the meem sakinah is followed by ب, so Ikhfaa Shafawi is applied."
+            },
+            {
+                topic: "Rules of Meem Sakinah",
+                question: "How many letters cause Ikhfaa Shafawi?",
+                options: ["One (ب)", "Two (ب م)", "Three (ب م و)", "All except ب and م"],
+                correct: 0,
+                explanation: "Only one letter - ب (ba) - causes Ikhfaa Shafawi."
+            },
+            {
+                topic: "Rules of Meem Sakinah",
+                question: "In عَلَيْهِمْ وَلَا, what rule is applied to the meem sakinah?",
+                options: ["Idghaam Shafawi", "Ikhfaa Shafawi", "Idhhaar Shafawi", "No rule"],
+                correct: 2,
+                explanation: "Since و is not م or ب, the meem sakinah is pronounced clearly (Idhhaar Shafawi)."
+            },
+            {
+                topic: "Rules of Meem Sakinah",
+                question: "Which rule applies to the most letters?",
+                options: ["Idghaam Shafawi", "Ikhfaa Shafawi", "Idhhaar Shafawi", "All rules apply equally"],
+                correct: 2,
+                explanation: "Idhhaar Shafawi applies to all letters except م and ب, making it the rule with the most letters."
+            },
+            {
+                topic: "Rules of Meem Sakinah",
+                question: "Which rule requires a ghunnah sound of 2 counts?",
+                options: ["Only Idghaam Shafawi", "Only Ikhfaa Shafawi", "Both Idghaam and Ikhfaa Shafawi", "Neither"],
+                correct: 2,
+                explanation: "Both Idghaam Shafawi and Ikhfaa Shafawi require a ghunnah sound of 2 counts."
+            },
+            
+            // Types of Madd (Mudood) Questions
+            {
+                topic: "Types of Madd (Elongation)",
+                question: "What is the duration of Natural Madd (المد الطبيعي)?",
+                options: [
+                    "4 counts",
+                    "2 counts",
+                    "6 counts",
+                    "5 counts"
+                ],
+                correct: 1,
+                explanation: "Natural Madd is always recited with 2 counts, which is its natural length."
+            },
+            {
+                topic: "Types of Madd (Elongation)",
+                question: "Which type of Madd occurs when a Madd letter is followed by a Hamzah in the same word?",
+                options: [
+                    "Madd Munfasil",
+                    "Madd Lazim",
+                    "Madd Muttasil",
+                    "Madd Badal"
+                ],
+                correct: 2,
+                explanation: "Madd Muttasil occurs when a Madd letter is followed by a Hamzah in the same word, and is elongated for 4-5 counts."
+            },
+            {
+                topic: "Types of Madd (Elongation)",
+                question: "What is the length of Madd Lazim?",
+                options: [
+                    "2 counts",
+                    "4 counts",
+                    "6 counts",
+                    "2-4 counts"
+                ],
+                correct: 2,
+                explanation: "Madd Lazim is always recited with 6 counts, making it the longest obligatory Madd."
+            },
+            {
+                topic: "Types of Madd (Elongation)",
+                question: "Which Madd occurs at the end of verses when stopping?",
+                options: [
+                    "Madd Arid",
+                    "Madd Leen",
+                    "Madd Badal",
+                    "Madd Muttasil"
+                ],
+                correct: 0,
+                explanation: "Madd Arid occurs at the end of verses when stopping, and can be recited with 2, 4, or 6 counts."
+            },
+            {
+                topic: "Types of Madd (Elongation)",
+                question: "What is the characteristic of Madd Badal?",
+                options: [
+                    "Madd letter followed by sukoon",
+                    "Hamzah followed by madd letter",
+                    "Madd letter at end of verse",
+                    "Madd letter followed by hamzah"
+                ],
+                correct: 1,
+                explanation: "Madd Badal occurs when a hamzah is followed by a madd letter, and is recited with 2 counts."
+            },
+            {
+                topic: "Types of Madd (Elongation)",
+                question: "In Natural Madd with Waw, what precedes the silent waw?",
+                options: [
+                    "Fathah",
+                    "Kasrah",
+                    "Dammah",
+                    "Sukoon"
+                ],
+                correct: 2,
+                explanation: "In Natural Madd with Waw, a dammah precedes the silent waw, as in يَقُولُ or نُورٌ."
+            },
+            {
+                topic: "Types of Madd (Elongation)",
+                question: "What distinguishes Madd Munfasil from Madd Muttasil?",
+                options: [
+                    "The length of elongation",
+                    "The hamzah is in the next word",
+                    "The presence of sukoon",
+                    "The type of madd letter"
+                ],
+                correct: 1,
+                explanation: "Madd Munfasil occurs when the madd letter and hamzah are in separate words, unlike Muttasil where they're in the same word."
+            },
+            
+            // Rules of Stopping and Starting (Alwaqf) Questions
+            {
+                topic: "Stopping and Starting Rules",
+                question: "What type of stop is required when the meaning would be distorted if continuing?",
+                options: [
+                    "Permitted Stop",
+                    "Obligatory Stop",
+                    "Fair Stop",
+                    "Good Stop"
+                ],
+                correct: 1,
+                explanation: "An Obligatory Stop (الوقف اللازم) is required when continuing would distort or contradict the intended meaning."
+            },
+            {
+                topic: "Stopping and Starting Rules",
+                question: "When is it prohibited to stop?",
+                options: [
+                    "At the end of a verse",
+                    "In the middle of a word",
+                    "At a complete meaning",
+                    "When out of breath"
+                ],
+                correct: 1,
+                explanation: "It is prohibited to stop in the middle of a word as it disrupts the proper pronunciation and meaning."
+            },
+            {
+                topic: "Stopping and Starting Rules",
+                question: "What characterizes a Complete Stop (تام)?",
+                options: [
+                    "Stopping mid-sentence",
+                    "Stopping at any point",
+                    "Complete meaning with no connection to what follows",
+                    "Incomplete meaning"
+                ],
+                correct: 2,
+                explanation: "A Complete Stop occurs when the meaning is complete and there is no grammatical or meaning connection to what follows."
+            },
+            {
+                topic: "Stopping and Starting Rules",
+                question: "What should a reciter do when running out of breath?",
+                options: [
+                    "Continue reciting",
+                    "Stop at any point",
+                    "Stop at the nearest permitted location",
+                    "Skip to the next verse"
+                ],
+                correct: 2,
+                explanation: "When running out of breath, the reciter should stop at the nearest permitted location to maintain proper recitation."
+            },
+            {
+                topic: "Stopping and Starting Rules",
+                question: "What is a Good Stop (كافي)?",
+                options: [
+                    "Stopping in the middle of a word",
+                    "Meaning is complete but connected to what follows",
+                    "Incomplete meaning",
+                    "Prohibited stop"
+                ],
+                correct: 1,
+                explanation: "A Good Stop occurs when the meaning is complete but there is some connection to what follows."
+            },
+            {
+                topic: "Stopping and Starting Rules",
+                question: "Which type of stop provides the smoothest transition when resuming recitation?",
+                options: [
+                    "Obligatory Stop",
+                    "Complete Stop",
+                    "Good Stop",
+                    "Fair Stop"
+                ],
+                correct: 2,
+                explanation: "A Good Stop (كافي) provides the smoothest transition when resuming because the meaning is complete but grammatically connected to what follows."
+            },
+            {
+                topic: "Stopping and Starting Rules",
+                question: "What happens to the vowels at the end of words when stopping?",
+                options: [
+                    "They are prolonged",
+                    "They change to sukoon",
+                    "They remain unchanged",
+                    "They are emphasized"
+                ],
+                correct: 1,
+                explanation: "When stopping at the end of words, the vowels typically change to sukoon (no vowel)."
+            },
+            
+            // Rules of Tafkheem and Tarqeeq Questions
+            {
+                topic: "Rules of Tafkheem and Tarqeeq",
+                question: "Which letters are always pronounced with tafkheem?",
+                options: [
+                    "ب ت ث",
+                    "خ ص ض ط ظ غ ق",
+                    "ج ح د",
+                    "ك ل م"
+                ],
+                correct: 1,
+                explanation: "The letters خ ص ض ط ظ غ ق are always pronounced with tafkheem (fullness) regardless of their position or vowels."
+            },
+            {
+                topic: "Rules of Tafkheem and Tarqeeq",
+                question: "When is the laam in the word 'Allah' pronounced with tafkheem?",
+                options: [
+                    "Always",
+                    "When preceded by kasra",
+                    "When preceded by fatha or damma",
+                    "Never"
+                ],
+                correct: 2,
+                explanation: "The laam in Allah is pronounced with tafkheem when preceded by fatha (َ) or damma (ُ)."
+            },
+            {
+                topic: "Rules of Tafkheem and Tarqeeq",
+                question: "When is the letter ra (ر) pronounced with tarqeeq?",
+                options: [
+                    "When it has a kasra or sukoon after kasra",
+                    "When it has a fatha",
+                    "When it has a damma",
+                    "Always"
+                ],
+                correct: 0,
+                explanation: "Ra is pronounced with tarqeeq when it has a kasra or when it has a sukoon and is preceded by a kasra."
+            },
+            {
+                topic: "Rules of Tafkheem and Tarqeeq",
+                question: "How many letters of isti'laa (elevation) are there?",
+                options: [
+                    "5",
+                    "6",
+                    "7",
+                    "8"
+                ],
+                correct: 2,
+                explanation: "There are 7 letters of isti'laa: خ ص ض ط ظ غ ق"
+            },
+            {
+                topic: "Rules of Tafkheem and Tarqeeq",
+                question: "In the word 'بِالله', how is the laam pronounced?",
+                options: [
+                    "With tafkheem",
+                    "With tarqeeq",
+                    "Either way is correct",
+                    "It depends on the reader"
+                ],
+                correct: 1,
+                explanation: "In بِالله, the laam is pronounced with tarqeeq because it is preceded by a kasra."
+            },
+            {
+                topic: "Rules of Tafkheem and Tarqeeq",
+                question: "Which letters are always pronounced with tarqeeq?",
+                options: [
+                    "All letters except خ ص ض ط ظ غ ق, ر, and لام in لفظ الجلالة",
+                    "Only د ب ت",
+                    "None, all letters can be pronounced both ways",
+                    "ج ح خ"
+                ],
+                correct: 0,
+                explanation: "All letters except the letters of istilaa (خ ص ض ط ظ غ ق), the letter رaا (in specific cases), and the لام in لفظ الجلالة (in specific cases) are always pronounced with tarqeeq."
+            },
+            {
+                topic: "Rules of Tafkheem and Tarqeeq",
+                question: "How should Ra be pronounced in رِزْق?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on the following letter"
+                ],
+                correct: 1,
+                explanation: "When Ra has a kasrah (ِ), it is always pronounced with Tarqeeq (light pronunciation)."
+            },
+            
+            // Rules of Raa Questions
+            {
+                topic: "Rules of Raa",
+                question: "How should Raa be pronounced in the word رَسُول?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on the following letter"
+                ],
+                correct: 0,
+                explanation: "The Raa has a fathah (َ), so it should be pronounced with Tafkheem (heavy pronunciation)."
+            },
+            {
+                topic: "Rules of Raa",
+                question: "In the word فِرْعَوْن, how should the Raa be pronounced?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on the following letter"
+                ],
+                correct: 1,
+                explanation: "The Raa has a sukoon and is preceded by a kasrah (ِ), so it should be pronounced with Tarqeeq (light pronunciation)."
+            },
+            {
+                topic: "Rules of Raa",
+                question: "How should Raa be pronounced in رُوح?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on the following letter"
+                ],
+                correct: 0,
+                explanation: "When Raa has a dammah (ُ), it is always pronounced with Tafkheem (heavy pronunciation)."
+            },
+            {
+                topic: "Rules of Raa",
+                question: "In the word مَرْيَم, what is the correct pronunciation of Raa?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on the following letter"
+                ],
+                correct: 0,
+                explanation: "The Raa has a sukoon and is preceded by a fathah (َ), so it should be pronounced with Tafkheem (heavy pronunciation)."
+            },
+            {
+                topic: "Rules of Raa",
+                question: "How should the Raa be pronounced in قُرْآن?",
+                options: [
+                    "With Tarqeeq due to the following alif",
+                    "With Tafkheem due to the dhammah",
+                    "With Tarqeeq due to the sukoon",
+                    "Either way is correct"
+                ],
+                correct: 1,
+                explanation: "The Raa has a sukoon and is preceded by a dhammah (ُ), so it should be pronounced with Tafkheem (heavy pronunciation)."
+            },
+            {
+                topic: "Rules of Raa",
+                question: "In فِرَار, how should the first Raa be pronounced?",
+                options: [
+                    "With Tafkheem due to the fathah",
+                    "With Tarqeeq due to the preceding kasrah",
+                    "With Tafkheem due to the second Raa",
+                    "Either way is correct"
+                ],
+                correct: 0,
+                explanation: "The Raa has a fathah (َ), so it should be pronounced with Tafkheem (heavy pronunciation). The kasrah on the first letter (فِ) does not affect the Raa's pronunciation."
+            },
+            {
+                topic: "Rules of Raa",
+                question: "Analyze رُوح - what determines the pronunciation of Raa?",
+                options: [
+                    "The dhammah on the Raa",
+                    "The following واو",
+                    "Both the dhammah and واو",
+                    "The end of the word"
+                ],
+                correct: 0,
+                explanation: "The Raa has a dhammah (ُ), so it should be pronounced with Tafkheem (heavy pronunciation). The following letter doesn't affect this rule."
+            },
+            
+            // Rules of Laam Questions
+            {
+                topic: "Rules of Laam",
+                question: "In the word اَلْقَمَر, what type of laam is there?",
+                options: [
+                    "Laam Qamariyah",
+                    "Laam Shamsiyah",
+                    "Neither",
+                    "Both types apply"
+                ],
+                correct: 0,
+                explanation: "Since ق (qaf) is a qamariyah letter, the laam is pronounced clearly (Laam Qamariyah)."
+            },
+            {
+                topic: "Rules of Laam",
+                question: "How should the laam be pronounced in اَلشَّمْس?",
+                options: [
+                    "Clearly pronounced",
+                    "Merged with the following letter",
+                    "Silent",
+                    "Extended"
+                ],
+                correct: 1,
+                explanation: "Since ش (sheen) is a shamsiyah letter, the laam merges into it (Laam Shamsiyah)."
+            },
+            {
+                topic: "Rules of Laam",
+                question: "Which rule applies in اَلْبَيْت?",
+                options: [
+                    "Laam Shamsiyah",
+                    "Laam Qamariyah",
+                    "No rule applies",
+                    "It depends on the context"
+                ],
+                correct: 1,
+                explanation: "Since ب (baa) is a qamariyah letter, the laam is pronounced clearly (Laam Qamariyah)."
+            },
+            {
+                topic: "Rules of Laam",
+                question: "In اَلنَّاس, what happens to the laam?",
+                options: [
+                    "It's pronounced clearly",
+                    "It merges with the following noon",
+                    "It's silent",
+                    "It's extended"
+                ],
+                correct: 1,
+                explanation: "Since ن (noon) is a shamsiyah letter, the laam merges into it (Laam Shamsiyah)."
+            },
+            {
+                topic: "Rules of Laam",
+                question: "Which set of letters are Qamariyah letters?",
+                options: [
+                    "ت ث د ذ ر ز س ش",
+                    "ء ب ج ح خ ع غ ف",
+                    "ص ض ط ظ ل ن",
+                    "None of the above"
+                ],
+                correct: 1,
+                explanation: "Qamariyah letters are: ء ب ج ح خ ع غ ف ق ك م هـ و ي. These letters require clear pronunciation of laam."
+            },
+            {
+                topic: "Rules of Laam",
+                question: "In اَلْحَمْدُ, how is the laam pronounced?",
+                options: [
+                    "Merged with the following letter",
+                    "Clearly pronounced",
+                    "Silent",
+                    "Extended"
+                ],
+                correct: 1,
+                explanation: "Since ح (haa) is a qamariyah letter, the laam is pronounced clearly (Laam Qamariyah)."
+            },
+            {
+                topic: "Rules of Laam",
+                question: "How many Shamsiyah letters are there in total?",
+                options: [
+                    "14 letters",
+                    "28 letters",
+                    "16 letters",
+                    "12 letters"
+                ],
+                correct: 0,
+                explanation: "There are 14 Shamsiyah letters: ت ث د ذ ر ز س ش ص ض ط ظ ل ن"
+            },
+            
+            // Lafthul Jalalah (الله) Rules Questions
+            {
+                topic: "Rules of Lafth-ul-Jalalah (الله)",
+                question: "How should Lafth-ul-Jalalah be pronounced in the phrase: عَبْدُ الله",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "None of the above"
+                ],
+                correct: 0,
+                explanation: "In عَبْدُ الله, Allah is preceded by a dhammah (  ُ ), so it should be pronounced with Tafkheem (heavy pronunciation)."
+            },
+            {
+                topic: "Rules of Lafth-ul-Jalalah (الله)",
+                question: "In the phrase بِسْمِ الله الرَّحْمٰنِ الرَّحِيْم, how should Allah be pronounced?",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "None of the above"
+                ],
+                correct: 1,
+                explanation: "In بِسْمِ الله, Allah is preceded by a kasrah  (  ِ ) , so it should be pronounced with Tarqeeq (light pronunciation)."
+            },
+            {
+                topic: "Rules of Lafth-ul-Jalalah (الله)",
+                question: "Identify the correct pronunciation for Allah in: وَاللهُ أَكْبَر",
+                options: [
+                    "With Tarqeeq (light)",
+                    "With Tafkheem (heavy)",
+                    "Either way is correct",
+                    "Depends on the next word"
+                ],
+                correct: 1,
+                explanation: "In وَاللهُ, Allah is preceded by a fathah (  َ ), so it must be pronounced with Tafkheem (heavy pronunciation)."
+            },
+            {
+                topic: "Rules of Lafth-ul-Jalalah (الله)",
+                question: "How should Allah be pronounced in: قُلِ اللهُمَّ",
+                options: [
+                    "With Tafkheem (heavy)",
+                    "With Tarqeeq (light)",
+                    "Either way is correct",
+                    "Depends on the next word"
+                ],
+                correct: 1,
+                explanation: "In قُلِ اللهُمَّ, Allah is preceded by a kasrah (  ِ ), so it should be pronounced with Tarqeeq (light pronunciation)."
+            },
+            {
+                topic: "Rules of Lafth-ul-Jalalah (الله)",
+                question: "In the phrase شَهِدَ الله, identify the correct pronunciation rule:",
+                options: [
+                    "Tarqeeq because of the previous kasrah in دَ",
+                    "Tafkheem because of the fathah in دَ",
+                    "Either pronunciation is acceptable",
+                    "Depends on the next word"
+                ],
+                correct: 1,
+                explanation: "In شَهِدَ الله, Allah is preceded by a fathah (  َ ) in دَ, so it must be pronounced with Tafkheem (heavy pronunciation), regardless of the kasrah in هِ."
+            },
+            {
+                topic: "Rules of Lafth-ul-Jalalah (الله)",
+                question: "Analyze the phrase: لِله الحَمْد - How should Allah be pronounced?",
+                options: [
+                    "With Tafkheem due to the following alif",
+                    "With Tarqeeq due to the kasrah",
+                    "With Tafkheem due to the laam before it",
+                    "Either way is correct"
+                ],
+                correct: 1,
+                explanation: "In لِله, Allah is connected to a kasrah (  ِ ), so it should be pronounced with Tarqeeq (light pronunciation). The following alif doesn't affect this rule."
+            },
+            {
+                topic: "Rules of Lafth-ul-Jalalah (الله)",
+                question: "What determines the pronunciation of Laam in Lafthul Jalalah?",
+                options: [
+                    "The letter before Lafthul Jalalah",
+                    "The letters within Lafthul Jalalah",
+                    "The vowel/harakah on the letter before it",
+                    "The letter after Lafthul Jalalah"
+                ],
+                correct: 2,
+                explanation: "The vowel on the letter immediately before Lafthul Jalalah determines whether it's pronounced with tafkheem or tarqeeq."
+            }
+        ];
+
+        let currentQuizQuestion = 0;
+        let score = 0;
+        let answeredQuizQuestions = [];
+        let topicGroups = {};
+
+        // Group questions by topic
+        quizQuestions.forEach(question => {
+            if (!topicGroups[question.topic]) {
+                topicGroups[question.topic] = [];
+            }
+            topicGroups[question.topic].push(question);
+        });
+
+        // Function to shuffle and select questions from each topic
+        function createFinalQuiz() {
+            let finalQuiz = [];
+            for (const topic in topicGroups) {
+                // Shuffle the topic questions
+                const shuffled = [...topicGroups[topic]].sort(() => 0.5 - Math.random());
+                // Select the first 5 questions from each topic
+                finalQuiz = finalQuiz.concat(shuffled.slice(0, 5));
+            }
+            // Shuffle the final quiz to mix topics
+            return finalQuiz.sort(() => 0.5 - Math.random());
+        }
+
+        let finalQuizQuestions = createFinalQuiz();
+
+        function initializeQuiz() {
+            currentQuizQuestion = 0;
+            score = 0;
+            answeredQuizQuestions = new Array(finalQuizQuestions.length).fill(false);
+            document.getElementById('currentQuestion').textContent = '1';
+            document.getElementById('totalQuestions').textContent = finalQuizQuestions.length;
+            updateProgressBar();
+            displayQuestion();
+            updateNavigationButtons();
+
+            // Reset classes
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('results-display').classList.add('hidden');
+        }
+
+        function displayQuestion() {
+            const quiz = finalQuizQuestions[currentQuizQuestion];
+            const container = document.getElementById('question-container');
+            const isAnswered = answeredQuizQuestions[currentQuizQuestion];
+
+            // Create topic header if this is a new topic or the first question
+            let topicHeaderHTML = '';
+            if (currentQuizQuestion === 0 || finalQuizQuestions[currentQuizQuestion - 1].topic !== quiz.topic) {
+                topicHeaderHTML = `
+                    <div class="topic-header">
+                        <h3 class="text-xl font-semibold text-gray-800">${quiz.topic}</h3>
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = `
+                ${topicHeaderHTML}
+                <div class="mb-6">
+                    <p class="text-lg font-medium text-gray-800 mb-4">${quiz.question}</p>
+                    <div class="options-container space-y-3">
+                        ${quiz.options.map((option, index) => `
+                            <div class="quiz-option" 
+                                onclick="checkAnswer(${index})" 
+                                data-index="${index}">
+                                <div class="text-gray-700">${option}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            if (isAnswered) {
+                const options = container.querySelectorAll('.quiz-option');
+                options.forEach((option, index) => {
+                    const optionIndex = parseInt(option.getAttribute('data-index'));
+                    if (optionIndex === quiz.correct) {
+                        option.classList.add('correct');
+                    } else if (optionIndex === finalQuizQuestions[currentQuizQuestion].selectedAnswer) {
+                        option.classList.add('incorrect');
+                    }
+                });
+                
+                document.getElementById('feedback').innerHTML = `
+                    <p class="font-semibold mb-2">Explanation:</p>
+                    <p>${quiz.explanation}</p>
+                `;
+                document.getElementById('feedback').classList.remove('hidden');
+            } else {
+                document.getElementById('feedback').classList.add('hidden');
+            }
+
+            document.getElementById('currentQuestion').textContent = currentQuizQuestion + 1;
+        }
+
+        function checkAnswer(selected) {
+            if (answeredQuizQuestions[currentQuizQuestion]) return;
+
+            const quiz = finalQuizQuestions[currentQuizQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            
+            // Store the selected answer
+            finalQuizQuestions[currentQuizQuestion].selectedAnswer = selected;
+            
+            if (selected === quiz.correct) {
+                options[selected].classList.add('correct');
+                score++;
+            } else {
+                options[selected].classList.add('incorrect');
+                options[quiz.correct].classList.add('correct');
+            }
+
+            document.getElementById('feedback').innerHTML = `
+                <p class="font-semibold mb-2">Explanation:</p>
+                <p>${quiz.explanation}</p>
+            `;
+            document.getElementById('feedback').classList.remove('hidden');
+
+            answeredQuizQuestions[currentQuizQuestion] = true;
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        function updateProgressBar() {
+            const progress = (answeredQuizQuestions.filter(Boolean).length / finalQuizQuestions.length) * 100;
+            document.querySelector('.progress-fill').style.width = `${progress}%`;
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuizQuestion === 0;
+            
+            if (currentQuizQuestion === finalQuizQuestions.length - 1) {
+                if (answeredQuizQuestions[currentQuizQuestion]) {
+                    nextBtn.textContent = 'See Results';
+                    nextBtn.onclick = showResults;
+                } else {
+                    nextBtn.disabled = true;
+                    nextBtn.textContent = 'Next';
+                }
+            } else {
+                nextBtn.textContent = 'Next';
+                nextBtn.disabled = !answeredQuizQuestions[currentQuizQuestion];
+                nextBtn.onclick = nextQuestion;
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuizQuestion < finalQuizQuestions.length - 1) {
+                currentQuizQuestion++;
+                displayQuestion();
+                updateNavigationButtons();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuizQuestion > 0) {
+                currentQuizQuestion--;
+                displayQuestion();
+                updateNavigationButtons();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function showResults() {
+            // Hide quiz container and show results
+            document.getElementById('quiz-container').classList.add('hidden');
+            const resultsDisplay = document.getElementById('results-display');
+            resultsDisplay.classList.remove('hidden');
+            
+            const percentage = Math.round((score / finalQuizQuestions.length) * 100);
+            
+            // Group results by topic
+            const topicResults = {};
+            finalQuizQuestions.forEach((question, index) => {
+                if (!topicResults[question.topic]) {
+                    topicResults[question.topic] = { total: 0, correct: 0 };
+                }
+                topicResults[question.topic].total++;
+                if (question.selectedAnswer === question.correct) {
+                    topicResults[question.topic].correct++;
+                }
+            });
+            
+            let topicResultsHTML = '';
+            for (const topic in topicResults) {
+                const topicScore = topicResults[topic];
+                const topicPercentage = Math.round((topicScore.correct / topicScore.total) * 100);
+                
+                topicResultsHTML += `
+                    <div class="mb-3 pb-3 border-b border-gray-200">
+                        <h4 class="font-medium text-gray-800">${topic}</h4>
+                        <div class="flex justify-between items-center">
+                            <span>${topicScore.correct}/${topicScore.total} correct</span>
+                            <span class="text-${topicPercentage >= 70 ? 'green' : 'red'}-600 font-medium">${topicPercentage}%</span>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            resultsDisplay.innerHTML = `
+                <h2 class="text-2xl font-bold mb-4">Quiz Results</h2>
+                <div class="score-circle">
+                    ${percentage}%
+                </div>
+                <p class="text-xl mb-6">You scored ${score} out of ${finalQuizQuestions.length}</p>
+                
+                <div class="topic-breakdown text-left mb-6">
+                    <h3 class="text-lg font-semibold mb-3">Topic Breakdown:</h3>
+                    ${topicResultsHTML}
+                </div>
+                
+                <button onclick="initializeQuiz()" class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mr-4">Retake Quiz</button>
+                <a href="index.html" class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Back to Home</a>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('prevBtn').onclick = previousQuestion;
+            document.getElementById('nextBtn').onclick = nextQuestion;
+            initializeQuiz();
+        });
+    </script>
+</body>
+</html>

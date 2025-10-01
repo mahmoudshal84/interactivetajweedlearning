@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makhaarij-ul-Huroof</title>
+    <link rel="icon" href="./FrontPageTileImages/favicon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        .arabic {
+            font-family: 'Amiri', serif;
+        }
+
+        .char-card {
+            background: white;
+            transition: all 0.2s ease;
+            border-width: 3px !important;
+            border-style: solid !important;
+            border-radius: 1rem !important;
+        }
+
+        .rule-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .makhraj-section {
+            border-color: #3b82f6 !important;
+        }
+
+        .char-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #93c5fd;
+        }
+
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
+    <nav class="bg-gray-100/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="rule-card flex items-center justify-between h-16">
+                <a href="index.html" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">← Back to Home</a>
+                <h1 class="text-2xl font-bold text-gray-800">Makhaarij-ul-Huroof</h1>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+        <!-- Main Content Section -->
+        <section class="rule-card">
+            <h2 class="section-title text-3xl font-bold text-slate-800">Places of Articulation</h2>
+            
+            <!-- Al Jauf - New Section -->
+            <div class="char-card makhraj-section p-6 mb-6">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Al Jauf (The Empty Space in the Mouth)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">The Empty Space</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ا و ي</div>
+                            <p class="text-sm text-slate-600">The empty space stretching from above the throat where the two vocal cords are until the two lips</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="text-lg font-medium text-slate-800 mb-2">Key Points</h4>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• These are the madd (prolongation) letters</li>
+                            <li>• They require an open mouth cavity for proper pronunciation</li>
+                            <li>• The airflow should be smooth and unobstructed</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Al Halq (Throat) Section - Updated -->
+            <div class="char-card makhraj-section p-6 mb-6">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Al Halq (The Throat)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Deepest Part of the Throat</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ء ه</div>
+                            <p class="text-sm text-slate-600">Pronounced from the deepest part of the throat</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Middle Part of the Throat</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ع ح</div>
+                            <p class="text-sm text-slate-600">Pronounced from the middle of the throat</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Closest Part of the Throat</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">غ خ</div>
+                            <p class="text-sm text-slate-600">Pronounced from the closest part of the throat</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="text-lg font-medium text-slate-800 mb-2">Key Points</h4>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• The space between the larynx and the deepest part of the tongue</li>
+                            <li>• Each pair of letters shares the same point of articulation</li>
+                            <li>• The throat has three distinct areas of pronunciation</li>
+                            <li>• Practice with proper airflow for clear pronunciation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Al Lisaan (Tongue) - Non-Tip Group Section -->
+            <div class="char-card makhraj-section p-6 mb-6">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Al Lisaan (The Tongue) - Non-Tip Group</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Base of Tongue</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ق</div>
+                            <p class="text-sm text-slate-600">Pronounced from the furthest point of the tongue touching what is directly above it of the soft palate</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Middle of Tongue</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ك</div>
+                            <p class="text-sm text-slate-600">Pronounced from just after the articulation point of "Qaaf" (ق) touching what lies directly above it of the hard palate</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Front Tongue with Hard Palate</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ج ش ي</div>
+                            <p class="text-sm text-slate-600">Pronounced from the front part of the tongue, just short of the tip, touching what is directly above it of the hard palate</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Either Edge of the Tongue</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ض</div>
+                            <p class="text-sm text-slate-600">Pronounced from either edge of the tongue</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Nearest Part of the Edge of the Tongue</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ل</div>
+                            <p class="text-sm text-slate-600">Pronounced from the nearest part of the edge of the tongue touching the gums while the sides of the tongue are lowered to allow air to flow around them.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="text-lg font-medium text-slate-800 mb-2">Pronunciation Tips</h4>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• Ensure proper tongue placement for each letter</li>
+                            <li>• These letters require precise tongue positioning</li>
+                            <li>• The sound should flow smoothly</li>
+                            <li>• Pay attention to the distinction between similar sounds</li>
+                            <li>• Maintain consistent airflow</li>
+                            <li>• Practice with slow, deliberate movements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Al Lisaan (Tongue) - Tip Group Section -->
+            <div class="char-card makhraj-section p-6 mb-6">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Al Lisaan (The Tongue) - Tip Group</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Tip with Gums</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ن</div>
+                            <p class="text-sm text-slate-600">Pronounced from the tip of the tongue touching the gums</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Tip with Root of Upper Teeth</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ر</div>
+                            <p class="text-sm text-slate-600">Pronounced where the tip of the tongue touches the hard palate slightly behind the point where the tongue touches for the letter "Noon" (ن)</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Tip with Upper Teeth</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ط د ت</div>
+                            <p class="text-sm text-slate-600">Pronounced from the tip of the tongue touching the root of the upper incisors</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Tip with Lower Teeth</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ص س ز</div>
+                            <p class="text-sm text-slate-600">Pronounced with a whistling sound from the tip of the tongue touching the top of the lower incisors, with leaving a small gap between the tongue and the lower incisors</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Tip with Gum Line</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ظ ذ ث</div>
+                            <p class="text-sm text-slate-600">Pronounced from the tip of the tongue touching the lower part of the upper incisors</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="text-lg font-medium text-slate-800 mb-2">Practice Tips</h4>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• Focus on the exact point of contact</li>
+                            <li>• Practice the rolling of ر carefully</li>
+                            <li>• Maintain proper nasal resonance for ن</li>
+                            <li>• Note the side emission of air for ل</li>
+                            <li>• Distinguish between light and heavy sounds</li>
+                            <li>• Listen for the distinct whistling sound in س، ص، ز</li>
+                            <li>• Maintain proper air flow between teeth</li>
+                            <li>• Keep the tongue position consistent</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ash Shafataan (The Lips) Section -->
+            <div class="char-card makhraj-section p-6 mb-6">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Ash Shafataan (The Lips)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Inner Lower Lip</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ف</div>
+                            <p class="text-sm text-slate-600">Pronounced using inner lower lip with tip of upper teeth</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Both Lips</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">و م ب</div>
+                            <p class="text-sm text-slate-600">Pronounced using both lips</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="text-lg font-medium text-slate-800 mb-2">Practice Tips</h4>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• Focus on proper lip positioning</li>
+                            <li>• Pronounce و by leaving a gap between the lips while circling them</li>
+                            <li>• Maintain proper tension in the lips</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Al Khayshoom (The Nasal Passage) - New Section -->
+            <div class="char-card makhraj-section p-6 mb-6">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Al Khayshoom (The Nasal Passage)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h4 class="text-blue-600 font-medium mb-2">Nasal Letters</h4>
+                            <div class="arabic text-3xl text-slate-800 mb-2">ن م</div>
+                            <p class="text-sm text-slate-600">Pronounced with air passing through the nasal passage</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="text-lg font-medium text-slate-800 mb-2">Key Points</h4>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• The nasal passage is used when pronouncing ghunnah (nasalization)</li>
+                            <li>• The sound resonates in the nasal cavity</li>
+                            <li>• Proper nasalization is crucial for correct pronunciation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="rule-card mt-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Test Your Knowledge</h2>
+                <div class="text-gray-800">
+                    Score: <span id="quizScore" class="font-bold">0</span>/<span id="totalQuestions">0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+
+            <div id="quizContainer" class="mb-6"></div>
+            
+            <div id="feedback" class="mb-4 p-4 rounded-lg hidden"></div>
+            
+            <div class="flex justify-between">
+                <button onclick="previousQuestion()" id="prevBtn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50">Previous</button>
+                <button onclick="nextQuestion()" id="nextBtn" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Next</button>
+            </div>
+        </section>
+    </main>
+    <script>
+        const quizQuestions = [
+            {
+                question: "Which letters are pronounced from Al Jauf (the empty space in the mouth)?",
+                options: [
+                    "ا و ي",
+                    "ء ه",
+                    "غ خ",
+                    "ق ك"
+                ],
+                correct: 0,
+                explanation: "The letters ا و ي (alif maddiyah, waaw maddiyah, yaa maddiyah) are pronounced from Al Jauf (the empty space in the mouth)."
+            },
+            {
+                question: "Which letters are pronounced from the deepest part of the throat?",
+                options: [
+                    "ا و ي",
+                    "ء ه",
+                    "غ خ",
+                    "ق ك"
+                ],
+                correct: 1,
+                explanation: "The letters ء (hamza) and ه (ha) are pronounced from the deepest part of the throat (aqsa al-halq)."
+            },
+            {
+                question: "From which part of the throat are the letters ع and ح pronounced?",
+                options: [
+                    "Deepest part",
+                    "Middle part",
+                    "Closest part",
+                    "None of the above"
+                ],
+                correct: 1,
+                explanation: "The letters ع ('ayn) and ح (ha) are pronounced from the middle part of the throat (wasat al-halq)."
+            },
+            {
+                question: "Which letters are pronounced from the closest part of the throat?",
+                options: [
+                    "ء ه",
+                    "ع ح",
+                    "غ خ",
+                    "ق ك"
+                ],
+                correct: 2,
+                explanation: "The letters غ (ghayn) and خ (kha) are pronounced from the closest part of the throat (adna al-halq)."
+            },
+            {
+                question: "Which letter is pronounced from the base of the tongue meeting the soft palate?",
+                options: [
+                    "ك",
+                    "ق",
+                    "غ",
+                    "ع"
+                ],
+                correct: 1,
+                explanation: "The letter ق (qaf) is pronounced from the base of the tongue meeting with the soft palate."
+            },
+            {
+                question: "Which group of letters is pronounced from the tongue touching the hard palate?",
+                options: [
+                    "ج ش ي",
+                    "ط د ت",
+                    "ظ ذ ث",
+                    "و م ب"
+                ],
+                correct: 0,
+                explanation: "The letters ج ش ي (jeem, sheen, ya) are pronounced from the tongue touching the hard palate (Shajariyah letters)."
+            },
+            {
+                question: "The letter ض is pronounced from:",
+                options: [
+                    "The tip of the tongue",
+                    "Either edge of the tongue",
+                    "The middle of the tongue",
+                    "The base of the tongue"
+                ],
+                correct: 1,
+                explanation: "The letter ض (dhad) is pronounced from either edge of the tongue."
+            },
+            {
+                question: "Which nasal letters use Al Khayshoom (the nasal passage)?",
+                options: [
+                    "ء ه",
+                    "ن م",
+                    "غ خ",
+                    "ل ر"
+                ],
+                correct: 1,
+                explanation: "The letters ن (noon) and م (meem) use Al Khayshoom (the nasal passage) for pronunciation."
+            },
+            {
+                question: "The Nit'eeyyah letters (ط د ت) are pronounced from:",
+                options: [
+                    "The throat",
+                    "The lips",
+                    "The tip of tongue with upper teeth",
+                    "The base of tongue"
+                ],
+                correct: 2,
+                explanation: "The Nit'eeyyah letters ط د ت are pronounced from the tip of the tongue touching the upper teeth."
+            },
+            {
+                question: "Which letters are pronounced using both lips?",
+                options: [
+                    "و م ب",
+                    "ف",
+                    "ظ ذ ث",
+                    "ط د ت"
+                ],
+                correct: 0,
+                explanation: "The letters و م ب (waw, meem, ba) are pronounced using both lips (Shafawiyyah letters)."
+            },
+            {
+                question: "The letter ف is pronounced using:",
+                options: [
+                    "Both lips",
+                    "Inner lower lip with upper teeth",
+                    "Tip of tongue",
+                    "Base of tongue"
+                ],
+                correct: 1,
+                explanation: "The letter ف (fa) is pronounced using the inner lower lip touching the upper teeth."
+            },
+            {
+                question: "Which group of letters is pronounced from the tip of tongue touching the lower part of the upper incisors?",
+                options: [
+                    "ط د ت",
+                    "ظ ذ ث",
+                    "و م ب",
+                    "ج ش ي"
+                ],
+                correct: 1,
+                explanation: "The letters ظ ذ ث (zha, dhal, tha) are pronounced from the tip of the tongue touching the buttom surface of the upper incisors."
+            },
+            {
+                question: "The letter ر is unique because it is pronounced:",
+                options: [
+                    "From the throat",
+                    "From the tip of tongue with rolling motion",
+                    "Using both lips",
+                    "From the base of tongue"
+                ],
+                correct: 1,
+                explanation: "The letter ر (ra) is pronounced from the tip of the tongue with a rolling motion, touching the root of the upper teeth."
+            },
+            {
+                question: "How would you describe the role of the tongue in pronouncing the letter ل?",
+                options: [
+                    "Only the tip touches the gums",
+                    "The whole tongue is raised",
+                    "The tip touches while sides are lowered",
+                    "The tongue remains flat"
+                ],
+                correct: 2,
+                explanation: "When pronouncing ل, the tip of the tongue touches the gums while its sides are lowered to allow air to flow around them."
+            },
+            {
+                question: "The letter ص combines which two qualities?",
+                options: [
+                    "Whistling and heaviness",
+                    "Lightness and whistling",
+                    "Nasalization and heaviness",
+                    "Rolling and heaviness"
+                ],
+                correct: 0,
+                explanation: "The letter ص uniquely combines both the whistling quality of Safeeriyah letters and the heaviness (tafkheem) in pronunciation."
+            },
+            {
+                question: "Which set of letters requires the most precise tongue control?",
+                options: [
+                    "و م ب",
+                    "ص س ز",
+                    "ء ه",
+                    "غ خ"
+                ],
+                correct: 1,
+                explanation: "The Safeeriyah letters (ص س ز) require very precise tongue control to create the correct whistling sound while maintaining proper contact points."
+            },
+            {
+                question: "What is a common mistake when pronouncing the letter ل?",
+                options: [
+                    "Making it too nasal",
+                    "Rolling the tongue",
+                    "Not allowing side airflow",
+                    "Using both lips"
+                ],
+                correct: 2,
+                explanation: "A common mistake when pronouncing ل is blocking the side airflow by not lowering the sides of the tongue properly."
+            },
+            {
+                question: "When pronouncing س, where exactly should the tongue be positioned?",
+                options: [
+                    "Touching upper teeth",
+                    "Near the top of the lower teeth without touching",
+                    "Between teeth",
+                    "Against roof of mouth"
+                ],
+                correct: 1,
+                explanation: "When pronouncing س, the tongue should be positioned near but not touching the lower incisors to create the proper whistling sound."
+            },
+            {
+                question: "What is the key difference between س and ص in terms of tongue position?",
+                options: [
+                    "Different teeth contact",
+                    "Different parts of tongue used",
+                    "Raised back of tongue for ص",
+                    "Different tongue tip position"
+                ],
+                correct: 2,
+                explanation: "While both س and ص share similar front tongue position, ص requires raising the back of the tongue to create heaviness (tafkheem)."
+            }
+        ];
+    
+        let currentQuestion = 0;
+        let quizScore = 0;
+        let answeredQuestions = new Set();
+    
+        function initializeQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            answeredQuestions = new Set();
+            document.getElementById('quizScore').textContent = '0';
+            document.getElementById('totalQuestions').textContent = quizQuestions.length;
+            updateProgressBar();
+            displayQuestion();
+            updateNavigationButtons();
+        }
+    
+        function displayQuestion() {
+            const quiz = quizQuestions[currentQuestion];
+            const container = document.getElementById('quizContainer');
+            const isAnswered = answeredQuestions.has(currentQuestion);
+            
+            container.innerHTML = `
+                <div class="mb-6">
+                    <p class="text-xl mb-6 text-gray-800">${quiz.question}</p>
+                    <div class="options-container">
+                        ${quiz.options.map((option, index) => `
+                            <div class="quiz-option p-4 border rounded-lg mb-3" 
+                                onclick="checkAnswer(${index})" 
+                                data-index="${index}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+    
+            if (isAnswered) {
+                const options = container.querySelectorAll('.quiz-option');
+                options.forEach((option, index) => {
+                    if (index === quiz.correct) {
+                        option.classList.add('correct');
+                    }
+                });
+                
+                container.innerHTML += `
+                    <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                        <p class="font-semibold mb-2">Explanation:</p>
+                        <p>${quiz.explanation}</p>
+                    </div>
+                `;
+            }
+        }
+    
+        function checkAnswer(selected) {
+            if (answeredQuestions.has(currentQuestion)) return;
+    
+            const quiz = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const selectedOption = options[selected];
+            const container = document.getElementById('quizContainer');
+            
+            if (selected === quiz.correct) {
+                selectedOption.classList.add('correct');
+                quizScore++;
+                document.getElementById('quizScore').textContent = quizScore;
+            } else {
+                selectedOption.classList.add('incorrect');
+                options[quiz.correct].classList.add('correct');
+            }
+    
+            container.innerHTML += `
+                <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                    <p class="font-semibold mb-2">Explanation:</p>
+                    <p>${quiz.explanation}</p>
+                </div>
+            `;
+    
+            answeredQuestions.add(currentQuestion);
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+    
+        function updateProgressBar() {
+            const progress = (answeredQuestions.size / quizQuestions.length) * 100;
+            document.querySelector('.progress-fill').style.width = `${progress}%`;
+        }
+    
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === quizQuestions.length - 1) {
+                if (answeredQuestions.has(currentQuestion)) {
+                    nextBtn.textContent = 'Restart Quiz';
+                    nextBtn.onclick = initializeQuiz;
+                    nextBtn.disabled = false;
+                } else {
+                    nextBtn.disabled = true;
+                }
+            } else {
+                nextBtn.textContent = 'Next';
+                nextBtn.disabled = !answeredQuestions.has(currentQuestion);
+                nextBtn.onclick = nextQuestion;
+            }
+        }
+    
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+    
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+    
+        // Initialize the quiz when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeQuiz();
+        });
+    </script>
+    </body>
+</html>

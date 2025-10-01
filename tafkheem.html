@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules of Tafkheem and Tarqeeq in Quranic Recitation</title>
+    <link rel="icon" href="./FrontPageTileImages/favicon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        .arabic {
+            font-family: 'Amiri', serif;
+        }
+
+        .char-card {
+            background: white;
+            transition: all 0.2s ease;
+            border-width: 3px !important;
+            border-style: solid !important;
+            border-radius: 1rem !important;
+        }
+
+        .rule-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+        }
+
+        .tafkheem-card {
+            border-color: #3b82f6 !important;
+        }
+
+        .tarqeeq-card {
+            border-color: #22c55e !important;
+        }
+
+        .special-rules {
+            border-color: #a855f7 !important;
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #93c5fd;
+        }
+
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
+    <nav class="bg-gray-100/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="rule-card flex items-center justify-between h-16">
+                <a href="index.html" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">← Back to Home</a>
+                <h1 class="text-2xl font-bold text-gray-800">Rules of Tafkheem and Tarqeeq (التفخيم والترقيق)</h1>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+        <!-- Tafkheem Section -->
+        <section class="rule-card">
+            <h2 class="section-title text-3xl font-bold text-slate-800">Letters of Tafkheem (حروف التفخيم)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Always Full -->
+                <div class="char-card tafkheem-card p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Always Full</h3>
+                    <p class="text-sm text-slate-600 mb-4">Letters that are always pronounced with fullness</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">خ ص ض ط ظ غ ق</div>
+                    </div>
+                </div>
+
+                <!-- Full with Conditions -->
+                <div class="char-card tafkheem-card p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Laam in Allah</h3>
+                    <p class="text-sm text-slate-600 mb-4">Full when preceded by fatha or damma</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">اللَّه ، واللَّه</div>
+                    </div>
+                </div>
+
+                <!-- Ra Tafkheem -->
+                <div class="char-card tafkheem-card p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Full Ra (ر)</h3>
+                    <p class="text-sm text-slate-600 mb-4">With fatha, damma, or sukoon after fatha/damma</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">رَسُول ، رُوح</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tarqeeq Section -->
+        <section class="rule-card">
+            <h2 class="section-title text-3xl font-bold text-slate-800">Letters of Tarqeeq (حروف الترقيق)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Always Light -->
+                <div class="char-card tarqeeq-card p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Always Light</h3>
+                    <p class="text-sm text-slate-600 mb-4">Letters pronounced with lightness</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">All the letters - (letters that are always full) - (ل and ر)</div>
+                    </div>
+                </div>
+
+                <!-- Light Laam -->
+                <div class="char-card tarqeeq-card p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Light Laam in Allah</h3>
+                    <p class="text-sm text-slate-600 mb-4">Light when preceded by kasra</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">بِاللَّه ، لِلَّه</div>
+                    </div>
+                </div>
+
+                <!-- Ra Tarqeeq -->
+                <div class="char-card tarqeeq-card p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Light Ra (ر)</h3>
+                    <p class="text-sm text-slate-600 mb-4">With kasra or sukoon after kasra (unless there is a heavy letter after the ر)</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">رِجَال ، فِرْعَون</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Quiz Section -->
+        <section class="rule-card mt-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Test Your Knowledge</h2>
+                <div class="text-gray-800">
+                    Score: <span id="quizScore" class="font-bold">0</span>/<span id="totalQuestions">0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+
+            <div id="quizContainer" class="mb-6"></div>
+            
+            <div id="feedback" class="mb-4 p-4 rounded-lg hidden"></div>
+            
+            <div class="flex justify-between">
+                <button onclick="previousQuestion()" id="prevBtn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50">Previous</button>
+                <button onclick="nextQuestion()" id="nextBtn" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Next</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const quizQuestions = [
+    {
+        question: "Which letters are always pronounced with tafkheem?",
+        options: [
+            "ب ت ث",
+            "خ ص ض ط ظ غ ق",
+            "ج ح د",
+            "ك ل م"
+        ],
+        correct: 1,
+        explanation: "The letters خ ص ض ط ظ غ ق are always pronounced with tafkheem (fullness) regardless of their position or vowels."
+    },
+    {
+        question: "When is the laam in the word 'Allah' pronounced with tafkheem?",
+        options: [
+            "Always",
+            "When preceded by kasra",
+            "When preceded by fatha or damma",
+            "Never"
+        ],
+        correct: 2,
+        explanation: "The laam in Allah is pronounced with tafkheem when preceded by fatha (َ) or damma (ُ)."
+    },
+    {
+        question: "When is the letter ra (ر) pronounced with tarqeeq?",
+        options: [
+            "When it has a kasra or sukoon after kasra",
+            "When it has a fatha",
+            "When it has a damma",
+            "Always"
+        ],
+        correct: 0,
+        explanation: "Ra is pronounced with tarqeeq when it has a kasra or when it has a sukoon and is preceded by a kasra."
+    },
+    {
+        question: "How many letters of isti'laa (elevation) are there?",
+        options: [
+            "5",
+            "6",
+            "7",
+            "8"
+        ],
+        correct: 2,
+        explanation: "There are 7 letters of isti'laa: خ ص ض ط ظ غ ق"
+    },
+    {
+        question: "In the word 'بِالله', how is the laam pronounced?",
+        options: [
+            "With tafkheem",
+            "With tarqeeq",
+            "Either way is correct",
+            "It depends on the reader"
+        ],
+        correct: 1,
+        explanation: "In بِالله, the laam is pronounced with tarqeeq because it is preceded by a kasra."
+    }
+];
+
+        let currentQuestion = 0;
+        let quizScore = 0;
+        let answeredQuestions = new Set();
+
+        function initializeQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            answeredQuestions = new Set();
+            document.getElementById('quizScore').textContent = '0';
+            document.getElementById('totalQuestions').textContent = quizQuestions.length;
+            updateProgressBar();
+            displayQuestion();
+            updateNavigationButtons();
+        }
+
+        function displayQuestion() {
+            const quiz = quizQuestions[currentQuestion];
+            const container = document.getElementById('quizContainer');
+            const isAnswered = answeredQuestions.has(currentQuestion);
+            
+            container.innerHTML = `
+                <div class="mb-6">
+                    <p class="text-xl font-semibold text-slate-800 mb-6">${quiz.question}</p>
+                    <div class="options-container">
+                        ${quiz.options.map((option, index) => `
+                            <div class="quiz-option p-4 border rounded-lg mb-3" 
+                                onclick="checkAnswer(${index})" 
+                                data-index="${index}">
+                                <div class="text-lg text-slate-800">${option}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            if (isAnswered) {
+                const options = container.querySelectorAll('.quiz-option');
+                options.forEach((option, index) => {
+                    if (index === quiz.correct) {
+                        option.classList.add('correct');
+                    }
+                });
+                
+                container.innerHTML += `
+                    <div class="p-4 bg-blue-50 rounded-lg text-slate-700 mb-4">
+                        <p class="font-semibold mb-2">Explanation:</p>
+                        <p class="text-lg">${quiz.explanation}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function checkAnswer(selected) {
+            if (answeredQuestions.has(currentQuestion)) return;
+
+            const quiz = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const selectedOption = options[selected];
+            const container = document.getElementById('quizContainer');
+            
+            if (selected === quiz.correct) {
+                selectedOption.classList.add('correct');
+                quizScore++;
+                document.getElementById('quizScore').textContent = quizScore;
+            } else {
+                selectedOption.classList.add('incorrect');
+                options[quiz.correct].classList.add('correct');
+            }
+
+            container.innerHTML += `
+                <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                    <p class="font-semibold mb-2">Explanation:</p>
+                    <p>${quiz.explanation}</p>
+                </div>
+            `;
+
+            answeredQuestions.add(currentQuestion);
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        function updateProgressBar() {
+            const progress = (answeredQuestions.size / quizQuestions.length) * 100;
+            document.querySelector('.progress-fill').style.width = `${progress}%`;
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === quizQuestions.length - 1) {
+                if (answeredQuestions.has(currentQuestion)) {
+                    nextBtn.textContent = 'Restart Quiz';
+                    nextBtn.onclick = function() {
+                        initializeQuiz();
+                    };
+                    nextBtn.disabled = false;
+                } else {
+                    nextBtn.disabled = true;
+                    nextBtn.textContent = 'Next';
+                }
+            } else {
+                nextBtn.textContent = 'Next';
+                nextBtn.disabled = !answeredQuestions.has(currentQuestion);
+                nextBtn.onclick = function() {
+                    nextQuestion();
+                };
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        // Initialize quiz when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeQuiz();
+        });
+    </script>
+</body>
+</html>

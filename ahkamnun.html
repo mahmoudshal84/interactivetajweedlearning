@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules of Noon Sakinah (ن/نْ) and Tanween (  ً &nbsp  ٍ  &nbsp  ٌ &nbsp)</title>
+    <link rel="icon" href="./FrontPageTileImages/favicon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <audio id="correctSound" src="audio/correct1.wav" preload="auto"></audio>
+    <audio id="wrongSound" src="audio/wrong.wav" preload="auto"></audio>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        .arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+        }
+
+        .audio-example {
+            background-color: #f8fafc;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .audio-example:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .rule-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+        }
+        
+        .rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #93c5fd;
+        }
+
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .mode-button {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-button:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+
+        .mode-button:hover:after {
+            width: 200%;
+            height: 200%;
+        }
+
+        .custom-audio-player {
+    display: flex;
+    align-items: center;
+}
+
+.play-button {
+    display: none;
+}
+
+        @media (max-width: 767px) {
+            audio {
+        display: none;
+    }
+    
+    .play-button {
+        display: flex;
+    }
+}
+
+    </style>
+</head>
+<body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
+
+    <nav class="bg-gray-100/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="rule-card flex items-center justify-between h-16">
+            <a href="index.html" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">← Back to Home</a>
+            <h1 class="text-2xl font-bold text-gray-800">Rules of Noon Sakinah (ن/نْ) and Tanween (&nbsp  ً &nbsp  ٍ  &nbsp  ٌ &nbsp)</h1>
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Learning Mode Section -->
+    <div id="learningMode">
+        <div id="ruleContainer"></div>
+    </div>
+
+    <!-- Quiz Mode Section -->
+    <div id="quizMode" class="rule-card mt-8">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-semibold text-gray-800">Test Your Knowledge</h2>
+            <div class="text-gray-800">
+                Score: <span id="score" class="font-bold">0</span>/<span id="totalQuestions">0</span>
+            </div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+        </div>
+
+        <div id="quizContainer" class="mb-6"></div>
+        
+        <div id="feedback" class="mb-4 p-4 rounded-lg hidden"></div>
+        
+        <div class="flex justify-between">
+            <button onclick="previousQuestion()" id="prevBtn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50">Previous</button>
+            <button onclick="nextQuestion()" id="nextBtn" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Next</button>
+        </div>
+    </div>
+</main>
+
+    <script>
+        // Rule navigation data
+        const rules = [
+            {
+                number: 1,
+                title: "اظهار - Idhhaar (Clear Pronunciation)",
+                letters: "(ء ه ع ح غ خ)",
+                color: "bg-blue-500",
+                description: "When you see a <strong>noon sakinah</strong> (a noon with no vowel) <strong>or tanween</strong> (the double marks that make an 'n' sound at the end of words), and <strong>right after it comes one of the 6 throat letters (ء ه ع ح غ خ)</strong>, you need to <strong>pronounce both sounds clearly</strong> and separately. Don't blend them together. See examples of Idhhar below.",
+                examples: [
+                    { arabic: "مِنْ خَيْرٍ", transliteration: "min khayr", audio: "audio/page1/Idhhaar/example1.m4a", explanation: "The noon sakinah (نْ) is followed by خ"},
+                    { arabic: "عَلِيمٌ حَكِيمٌ", transliteration: "'aleemun hakeem", audio: "audio/page1/Idhhaar/example2.m4a", explanation: "The dhammatayn on the meem (مٌ)  is followed by ح"},
+                    { arabic: "مَنْ ءَامَنَ", transliteration: "man 'aaman", audio: "audio/page1/Idhhaar/example3.m4a", explanation: "The noon sakinah (نْ) is followed by ء"},
+                    { arabic: "أَنْعَمْتَ", transliteration: "an'amt", audio: "audio/page1/Idhhaar/example4.m4a", explanation: "The noon sakinah (نْ) is followed by ع"},
+                    { arabic: "طَيْرًا أَبَابِيلَ", transliteration: "tayran abaabeel", audio: "audio/page1/Idhhaar/example5.m4a", explanation: "The fathatayn on the raa (رًا) is followed by ء"},
+                    { arabic: "وَٱنْحَرْ", transliteration: "wanhar", audio: "audio/page1/Idhhaar/example6.m4a", explanation: "The noon sakinah (نْ) is followed by ح"},
+                    { arabic: "مَنْ أُوتِىَ", transliteration: "man 'ootee", audio: "audio/page1/Idhhaar/example7.m4a", explanation: "The noon sakinah (نْ) is followed by ء"}
+                ]
+            },
+            {
+                number: 2,
+                title: "ادغام - Idghaam (Complete Merging)",
+                letters: "(ي ر م ل و ن)",
+                color: "bg-green-500",
+                description: `When you see a <strong>noon sakinah</strong> (a noon with no vowel) <strong>or tanween</strong> (the double marks that make an 'n' sound at the end of words), and <strong>right after it comes one of the 6 letters from the word 'يرملون' (yaa, raa, meem, laam, waaw, noon), the noon sound blends into that letter and is pronounced with a shaddah (stressed)</strong>.
+
+If the letter is from <strong>'ينمو' (yaa, noon, meem, waaw)</strong>, pronounce it <strong>with a nasal sound (ghunnah).</strong>
+
+If the letter is <strong>'ل' (lam) or 'ر' (ra)</strong>, pronounce it <strong>without a nasal sound (ghunnah).</strong>
+
+<strong>This merging rule only works between words, never within a single word;</strong> If noon sakinah is followed by one of these letters in the same word (like دُنْيَا, بُنْيَان, صِنْوَان, قِنْوَان), it's pronounced clearly as 'Idhhar Mutlaq' - not merged. See examples of Idghaam below.`,
+
+                examples: [
+                    { arabic: "مِن رَّبِّهِمْ", transliteration: "mir rabbihim", audio: "audio/page1/Idghaam/example1.m4a", explanation: "The noon sakinah (ن) is followed by ر"},
+                    { arabic: "مِن يَوْمِئِذٍ", transliteration: "miy yawmi'idh", audio: "audio/page1/Idghaam/example2.m4a", explanation: "The noon sakinah (ن) is followed by ي"},
+                    { arabic: "خَيْرٌ مِّنْ", transliteration: "khayrum min", audio: "audio/page1/Idghaam/example3.m4a", explanation: "The dhammatayn on the raa (رٌ)  is followed by م"},
+                    { arabic: "مِن نُّورٍ", transliteration: "min noor", audio: "audio/page1/Idghaam/example4.m4a", explanation: "The noon sakinah (ن) is followed by ن"},
+                    { arabic: "نَفْسٌ لِّنَفْسٍ", transliteration: "nafsul linafs", audio: "audio/page1/Idghaam/example5.m4a", explanation: "The dhammatayn on the seen (سٌ)  is followed by ل"},
+                    { arabic: " شَيْـًٔا وَٱلْأَمْرُ", transliteration: "shay'aw wal'amr", audio: "audio/page1/Idghaam/example6.m4a", explanation: "The fathatayn on the hamza (ـًٔا)  is followed by و"},
+                    { arabic: "وَيْلٌ لِّلْمُطَفِّفِينَ", transliteration: "waylul lilmutaffifeen", audio: "audio/page1/Idghaam/example7.m4a", explanation: "The dhammatayn on the laam (لٌ)  is followed by ل"}
+                ]
+            },
+            {
+                number: 3,
+                title: "اقلاب - Iqlaab (Converting to Meem)",
+                letters: "(ب)",
+                color: "bg-purple-500",
+                description: `When you see a <strong>noon sakinah</strong> (a noon with no vowel) <strong>or tanween</strong> (the double marks that make an 'n' sound at the end of words), and <strong>right after it comes the letter (ب)</strong>, you need <strong>pronounce the noon sound as a meem sound instead, along with a nasal sound (ghunnah) or 2 counts.</strong> See examples of Iqlab below.`,
+                examples: [
+                    { arabic: "مِنۢ بَعْدِ", transliteration: "mimm ba'd", audio: "audio/page1/iqlab/example1.m4a", explanation: "The noon sakinah (نۢ) is followed by ب"},
+                    { arabic: "سَمِيعُۢ بَصِيرٌ", transliteration: "samee'umm baseer", audio: "audio/page1/iqlab/example2.m4a", explanation: "The dhammatayn on the 'ayn (عٌ) is followed by ب"},
+                    { arabic: "أَنۢبَأَهُم", transliteration: "ammba 'ahum", audio: "audio/page1/iqlab/example3.m4a", explanation: "The noon sakinah (نۢ) is followed by ب"},
+                    { arabic: "عَلِيمٌ بِذَاتِ", transliteration: "aleemumm bidhat", audio: "audio/page1/iqlab/example4.m4a", explanation: "The dhammatayn on the meem (مٌ) is followed by ب"},
+                    { arabic: "حَدِيثٍۭ بَعْدَهُۥ", transliteration: "hadeethimm ba'dah", audio: "audio/page1/iqlab/example5.m4a", explanation: "The kasratayn on the thaa (ثٍ) is followed by ب"},
+                    { arabic: "مَنۢ بَخِلَ", transliteration: "mamm bakhil", audio: "audio/page1/iqlab/example6.m4a", explanation: "The noon sakinah (نۢ) is followed by ب"},
+                    { arabic: "لَنَسْفَعًۢا بِٱلنَّاصِيَةِ", transliteration: "lanasfa'amm binnasiyah", audio: "audio/page1/iqlab/example7.m4a", explanation: "The fathatayn on the 'ayn (عًا) is followed by ب"}
+                ]
+            },
+            {
+                number: 4,
+                title: "اخفاء - Ikhfaa' (Hiding)",
+                letters: "(ش س ز ذ د ج ث ت ك ق ف ظ ط ض ص)",
+                color: "bg-yellow-500",
+                description: `When you see a <strong>noon sakinah</strong> (a noon with no vowel) <strong> or tanween</strong> (the double marks that make an 'n' sound at the end of words), and <strong>right after it comes one of the 15 remaining letters,</strong> it should be <strong>pronounced in a state between Idhhar and Idghaam with a ghunnah of 2 counts</strong>, the mouth is also shaped in preparation for the Ikhfaa letter. If the <strong>Ikhfaa letter is heavy</strong>, the <strong>ghunnah is pronounced heavily</strong>. If the <strong>Ikhfaa letter is light</strong>, the <strong>ghunnah is pronounced lightly.</strong> See examples of Ikhfaa below.`,
+                examples: [
+                    { arabic: "مِن قَبْلِ", transliteration: "mi-- qabl", audio: "audio/page1/Ikhfaa/example1.m4a", explanation: "The noon sakinah (ن) is followed by ق"},
+                    { arabic: "كُنتُمْ", transliteration: "ku--tum", audio: "audio/page1/Ikhfaa/example2.m4a", explanation: "The noon sakinah (ن) is followed by ت"},
+                    { arabic: "مِن طِينٍ", transliteration: "mi-- teen", audio: "audio/page1/Ikhfaa/example3.m4a", explanation: "The noon sakinah (ن) is followed by ط"},
+                    { arabic: "مَن ذَا", transliteration: "ma-- dhaa", audio: "audio/page1/Ikhfaa/example4.m4a", explanation: "The noon sakinah (ن) is followed by ذ"},
+                    { arabic: "قَآئِمًا قُلْ", transliteration: "qaaaa 'ima-- qul", audio: "audio/page1/Ikhfaa/example5.m4a", explanation: "The fathatayn on the meem (مًا) is followed by ق"},
+                    { arabic: "جُنَّةً فَصَدُّوا۟", transliteration: "junnata-- fasadoo", audio: "audio/page1/Ikhfaa/example6.m4a", explanation: "The fathatayn on the taa (ةً) is followed by ف"},
+                    { arabic: "جَنَّـٰتٍ تَجْرِى", transliteration: "jannaati-- tajree", audio: "audio/page1/Ikhfaa/example7.m4a", explanation: "The kasratayn on the taa (تٍ) is followed by ت"}
+                ]
+            }
+        ];
+
+        let currentRule = 0;
+
+        function renderRule() {
+    const rule = rules[currentRule];
+    const container = document.getElementById('ruleContainer');
+    
+    container.innerHTML = `
+        <div class="relative max-w-4xl mx-auto">
+            <div class="rule-card">
+                <div class="flex justify-between items-center mb-4">
+                    <button onclick="prevRule()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Previous</button>
+                    <div class="text-center">
+                        <h2 class="text-2xl font-semibold text-gray-800">${rule.title}</h2>
+                        <div class="mt-2 text-lg font-arabic">${rule.letters}</div>
+                    </div>
+                    <button onclick="nextRule()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Next</button>
+                </div>
+                <p class="mb-6 text-gray-600">${rule.description}</p>
+                <div class="examples-grid">
+                    ${rule.examples.map((example, index) => `
+                        <div class="audio-example">
+                            <div class="flex items-center gap-4">
+                                <span class="arabic text-2xl">${example.arabic}</span>
+                                <div class="custom-audio-player">
+    <button class="play-button" onclick="toggleAudio(this, '${example.audio}')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+    </button>
+    <audio controls class="flex-shrink-0">
+        <source src="${example.audio}" type="audio/mp4">
+    </audio>
+</div>
+                            </div>
+                            <div class="mt-2">
+    <div class="text-gray-600 italic">${example.transliteration}</div>
+    <div class="text-gray-700 text-sm mt-1 italic font-semibold">${example.explanation || ''}</div>
+</div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+        function nextRule() {
+            currentRule = (currentRule + 1) % rules.length;
+            renderRule();
+        }
+
+        function prevRule() {
+            currentRule = (currentRule - 1 + rules.length) % rules.length;
+            renderRule();
+        }
+
+        function setRule(index) {
+            currentRule = index;
+            renderRule();
+        }
+
+        // Quiz questions database
+        const quizQuestions = [
+    {
+        question: "Which rule applies when the letter ب comes after a noon sakinah or tanween?",
+        options: ["Idhhar", "Idghaam", "Iqlab", "Ikhfaa"],
+        correct: 2,
+        explanation: "When noon sakinah meets ب (ba), it changes to a مْ (meem) sound with ghunnah. This is called Iqlab."
+    },
+    {
+        question: "Which letters are associated with Idhhar?",
+        options: [
+            "ي ر م ل و ن",
+            "ء ه ع ح غ خ",
+            "ب",
+            "The remaining letters"
+        ],
+        correct: 1,
+        explanation: "Idhhar occurs with the throat letters (ء ه ع ح غ خ). The noon sound is pronounced clearly with these letters."
+    },
+    {
+        question: "Which letters are associated with Idghaam?",
+        options: [
+            "ي ر م ل و ن",
+            "ء ه ع ح غ خ",
+            "ب",
+            "The remaining letters"
+        ],
+        correct: 0,
+        explanation: "Idghaam occurs with the letters (ي ر م ل و ن). The noon sakinah is merged with these letters such that no hint of noon is pronounced."
+    },
+    {
+        question: "Which letters are associated with Ikhfaa?",
+        options: [
+            "ي ر م ل و ن",
+            "ء ه ع ح غ خ",
+            "ب",
+            "The remaining letters"
+        ],
+        correct: 3,
+        explanation: "Ikhfaa occurs with all the letters that remain. The noon sakinah is hidden when pronounced with Ikhfaa."
+    },
+    {
+        question: "In مِن رَّبِّهِمْ, which rule is applied?",
+        options: ["Idhhar", "Idghaam", "Iqlab", "Ikhfaa"],
+        correct: 1,
+        explanation: "When noon sakinah meets ر (ra), it merges into it without ghunnah. This is Idghaam without ghunnah."
+    },
+    {
+        question: "Which letters have Idghaam WITH ghunnah?",
+        options: [
+            "ل ر",
+            "ي ن م و",
+            "ء ه ع ح غ خ",
+            "ب"
+        ],
+        correct: 1,
+        explanation: "The letters ي ن م و have Idghaam with ghunnah, while ل ر have Idghaam without ghunnah."
+    },
+    {
+        question: "In كُنتُمْ, which rule is being applied?",
+        options: ["Idhhar", "Idghaam", "Iqlab", "Ikhfaa"],
+        correct: 3,
+        explanation: "When noon sakinah meets ت (ta), it is hidden and pronounced with a ghunnah of 2 counts. This is Ikhfaa."
+    },
+    {
+        question: "How many letters are associated with Iqlab?",
+        options: ["One (ب)", "Two (ب م)", "Four (ي ن م و)", "Six (ء ه ع ح غ خ)"],
+        correct: 0,
+        explanation: "Only one letter - ب (ba) - causes Iqlab, where the noon sound changes to a meem sound."
+    },
+    {
+        question: "In عَلِيمٌ حَكِيمٌ, what happens to the noon sound from the tanween before ح?",
+        options: [
+            "It merges with ghunnah",
+            "It is pronounced clearly",
+            "It converts to meem",
+            "It is hidden"
+        ],
+        correct: 1,
+        explanation: "Since ح is a throat letter, the tanween is pronounced clearly (Idhhar)."
+    },
+    {
+        question: "Which rule has the most letters associated with it?",
+        options: ["Idhhar", "Idghaam", "Iqlab", "Ikhfaa"],
+        correct: 3,
+        explanation: "Ikhfaa has a total of 15 letters."
+    },
+    {
+        question: "In مِن يَوْمِئِذٍ, what type of Idghaam occurs?",
+        options: ["Idghaam without ghunnah", "Idghaam with ghunnah", "No Idghaam - it's Ikhfaa", "No Idghaam - it's Idhhar"],
+        correct: 1,
+        explanation: "When noon sakinah meets ي (ya), it merges with ghunnah. ي is one of the letters that causes Idghaam with ghunnah (ي ن م و)."
+    },
+    {
+        question: "When Idghaam is applied, how is the noon sakinah pronounced?",
+        options: [
+            "It is merged into the idgham letter, in other words the noon is completely skipped",
+            "It changes to meem sound",
+            "It has partial pronunciation",
+            "It is pronounced clearly"
+        ],
+        correct: 0,
+        explanation: "The noon is completely merged and no hint of it should be heard."
+    },
+    {
+        question: "What happens to the noon sakinah when it meets ث in مَن ثَقُلَتْ?",
+        options: ["Clear pronunciation of the noon sound", "Complete merging", "Changes to meem", "Hidden pronunciation of the noon sound"],
+        correct: 3,
+        explanation: "When noon sakinah meets thaa (ث), it is hidden with ghunnah (Ikhfaa), as ث is one of the Ikhfaa letters."
+    },
+    {
+        question: "In أَنْعَمْتَ, why is the noon sakinah pronounced clearly?",
+        options: ["Because ع is a throat letter", "Because ع is an Idghaam letter", "Because ع is an Ikhfaa letter", "Because ع causes Iqlab"],
+        correct: 0,
+        explanation: "The letter ع ('ayn) is one of the throat letters (ء ه ع ح غ خ), which requires clear pronunciation (Idhhar)."
+    },
+    {
+        question: "How many counts of ghunnah are required in Iqlab?",
+        options: ["No ghunnah", "One count", "Two counts", "Four counts"],
+        correct: 2,
+        explanation: "When performing Iqlab (converting noon sakinah to meem before ب), a ghunnah of 2 counts is required."
+    },
+    {
+        question: "In وَيْلٌ لِّلْمُطَفِّفِينَ, what happens to the tanween before ل?",
+        options: [
+            "Merges without ghunnah",
+            "Merges with ghunnah",
+            "Pronounced clearly",
+            "Hidden pronunciation"
+        ],
+        correct: 0,
+        explanation: "When tanween meets ل (lam), it merges without ghunnah as ل is one of the two letters of Idghaam without ghunnah (ل ر)."
+    },
+    {
+        question: "What are the heavy letters in Ikhfaa that make the ghunnah heavy?",
+        options: [
+            "ت ث د ذ",
+            "ص ض ط ظ ق",
+            "س ش ك ف",
+            "ج ز"
+        ],
+        correct: 1,
+        explanation: "The letters ص ض ط ظ ق are heavy letters in Ikhfaa, making the ghunnah heavy when noon sakinah or tanween meets them."
+    },
+    {
+        question: "How many counts of ghunnah are required in Ikhfaa?",
+        options: ["No ghunnah", "One count", "Two counts", "Four counts"],
+        correct: 2,
+        explanation: "When performing Ikhfaa, a ghunnah of 2 counts is required. The heaviness/lightness of the Ikhfaa letter determines the heaviness/lightness of the ghunna."
+    },
+    {
+        question: "In مَنۢ بَخِلَ, why is there a small meem symbol?",
+        options: [
+            "To indicate Idghaam",
+            "To show Iqlab",
+            "To mark Ikhfaa",
+            "To signal Idhhar"
+        ],
+        correct: 1,
+        explanation: "The small meem symbol indicates Iqlab, showing that the noon sakinah changes to a meem sound before ب."
+    },
+    {
+    question: "In the case of Idghaam, what is the main difference between how noon sakinah and tanween are pronounced?",
+    options: [
+        "Noon sakinah has ghunnah but tanween doesn't",
+        "There is no difference in pronunciation",
+        "Tanween requires an extra count of ghunnah",
+        "The first letter remains visible with noon sakinah but disappears with tanween"
+    ],
+    correct: 1,
+    explanation: "The pronunciation is the same but the way they are written is different."
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answeredQuestions = new Set();
+
+function initializeQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    answeredQuestions = new Set();
+    document.getElementById('score').textContent = '0';
+    document.getElementById('totalQuestions').textContent = quizQuestions.length;
+    updateProgressBar();
+    displayQuestion();
+    updateNavigationButtons();
+}
+
+function displayQuestion() {
+    const quiz = quizQuestions[currentQuestion];
+    const container = document.getElementById('quizContainer');
+    const isAnswered = answeredQuestions.has(currentQuestion);
+    
+    container.innerHTML = `
+        <div class="mb-6">
+            <p class="text-xl mb-6 text-gray-800">${quiz.question}</p>
+            <div class="options-container">
+                ${quiz.options.map((option, index) => `
+                    <div class="quiz-option p-4 border rounded-lg mb-3" 
+                        onclick="checkAnswer(${index})" 
+                        data-index="${index}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+
+    if (isAnswered) {
+        const options = container.querySelectorAll('.quiz-option');
+        options.forEach((option, index) => {
+            if (index === quiz.correct) {
+                option.classList.add('correct');
+            }
+        });
+        
+        container.innerHTML += `
+            <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                <p class="font-semibold mb-2">Explanation:</p>
+                <p>${quiz.explanation}</p>
+            </div>
+        `;
+    }
+}
+
+function checkAnswer(selected) {
+    if (answeredQuestions.has(currentQuestion)) return;
+
+    const quiz = quizQuestions[currentQuestion];
+    const options = document.querySelectorAll('.quiz-option');
+    const selectedOption = options[selected];
+    const container = document.getElementById('quizContainer');
+    
+    if (selected === quiz.correct) {
+        selectedOption.classList.add('correct');
+        score++;
+        document.getElementById('score').textContent = score;
+        playSound('correctSound');
+    } else {
+        selectedOption.classList.add('incorrect');
+        options[quiz.correct].classList.add('correct');
+        playSound('wrongSound');
+    }
+
+    container.innerHTML += `
+        <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+            <p class="font-semibold mb-2">Explanation:</p>
+            <p>${quiz.explanation}</p>
+        </div>
+    `;
+
+    answeredQuestions.add(currentQuestion);
+    updateProgressBar();
+    updateNavigationButtons();
+}
+
+function updateProgressBar() {
+    const progress = (answeredQuestions.size / quizQuestions.length) * 100;
+    document.querySelector('.progress-fill').style.width = `${progress}%`;
+}
+
+function updateNavigationButtons() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    prevBtn.disabled = currentQuestion === 0;
+    
+    if (currentQuestion === quizQuestions.length - 1) {
+        nextBtn.textContent = 'Restart Quiz';
+        nextBtn.onclick = initializeQuiz;
+        nextBtn.disabled = false;  // Enable restart button
+    } else {
+        nextBtn.textContent = 'Next';
+        nextBtn.disabled = false;  // Always enable Next button
+        nextBtn.onclick = nextQuestion;
+    }
+}
+
+function nextQuestion() {
+    if (currentQuestion < quizQuestions.length - 1) {
+        currentQuestion++;
+        displayQuestion();
+        updateNavigationButtons();
+    }
+}
+
+function previousQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        displayQuestion();
+        updateNavigationButtons();
+    }
+}
+
+// Function to play limited duration audio
+function playSound(audioId) {
+    const sound = document.getElementById(audioId);
+    sound.currentTime = 0;
+    sound.play();
+    setTimeout(() => {
+        sound.pause();
+        sound.currentTime = 0;
+    }, 200); // 0.2 seconds
+}
+
+// Audio playback control
+function toggleAudio(button, audioSrc) {
+    const audioElement = button.nextElementSibling;
+    
+    if (audioElement.paused) {
+        // Pause all other playing audio elements first
+        document.querySelectorAll('audio').forEach(audio => {
+            if (!audio.paused) {
+                audio.pause();
+                const playButton = audio.previousElementSibling;
+                if (playButton) {
+                    playButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+                }
+            }
+        });
+        
+        // Play this audio
+        audioElement.play();
+        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+    } else {
+        // Pause this audio
+        audioElement.pause();
+        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderRule();
+    initializeQuiz();
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopping and Starting Rules in Quranic Recitation</title>
+    <link rel="icon" href="./FrontPageTileImages/favicon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        .arabic {
+            font-family: 'Amiri', serif;
+        }
+
+        .char-card {
+            background: white;
+            transition: all 0.2s ease;
+            border-width: 3px !important;
+            border-style: solid !important;
+            border-radius: 1rem !important;
+        }
+
+        .rule-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+        }
+
+        .obligatory-stop {
+            border-color: #3b82f6 !important;
+        }
+
+        .prohibited-stop {
+            border-color: #ef4444 !important;
+        }
+
+        .permitted-stop {
+            border-color: #22c55e !important;
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #93c5fd;
+        }
+
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
+    <nav class="bg-gray-100/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="rule-card flex items-center justify-between h-16">
+                <a href="index.html" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">← Back to Home</a>
+                <h1 class="text-2xl font-bold text-gray-800">Stopping and Starting Rules (الوقف والابتداء)</h1>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+        <!-- Obligatory Stops Section -->
+        <section class="rule-card">
+            <h2 class="section-title text-3xl font-bold text-slate-800">Obligatory Stops (الوقف اللازم)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Complete Meaning -->
+                <div class="char-card obligatory-stop p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Complete Meaning</h3>
+                    <p class="text-sm text-slate-600 mb-4">Stop required to prevent misunderstanding</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">[stop] وَمَا يَعْلَمُ تَأْوِيلَهُ ۗ إِلَّا اللَّهُ</div>
+                    </div>
+                </div>
+
+                <!-- Contradictory Meaning -->
+                <div class="char-card obligatory-stop p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Prevent Contradiction</h3>
+                    <p class="text-sm text-slate-600 mb-4">Stop to avoid contradicting meaning</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">[stop] لَا رَيْبَ ۛ فِيهِ</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prohibited Stops Section -->
+        <section class="rule-card">
+            <h2 class="section-title text-3xl font-bold text-slate-800">Prohibited Stops (الوقف الممنوع)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Incomplete Meaning -->
+                <div class="char-card prohibited-stop p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Incomplete Meaning</h3>
+                    <p class="text-sm text-slate-600 mb-4">Middle of connected phrase</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">اللَّهِ [stop] بِسْمِ </div>
+                    </div>
+                </div>
+
+                <!-- Distorted Meaning -->
+                <div class="char-card prohibited-stop p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Distorted Meaning</h3>
+                    <p class="text-sm text-slate-600 mb-4">Changes intended meaning</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">الصَّلَاةَ [stop] لَا تَقْرَبُو </div>
+                    </div>
+                </div>
+
+                <!-- Middle of Word -->
+                <div class="char-card prohibited-stop p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Within Word</h3>
+                    <p class="text-sm text-slate-600 mb-4">Stopping mid-word</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800"> مَانِ[stop] الرَّحْ</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Permitted Stops Section -->
+        <section class="rule-card">
+            <h2 class="section-title text-3xl font-bold text-slate-800">Permitted Stops (الوقف الجائز)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Complete Stop -->
+                <div class="char-card permitted-stop p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Complete Stop (تام)</h3>
+                    <p class="text-sm text-slate-600 mb-4">End of complete meaning</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">أُولَٰئِكَ هُمُ الْمُفْلِحُونَ ۚ</div>
+                    </div>
+                </div>
+
+                <!-- Good Stop -->
+                <div class="char-card permitted-stop p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Good Stop (كافي)</h3>
+                    <p class="text-sm text-slate-600 mb-4">Meaning complete but connected</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝</div>
+                    </div>
+                </div>
+
+                <!-- Fair Stop -->
+                <div class="char-card permitted-stop p-6">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Fair Stop (حسن)</h3>
+                    <p class="text-sm text-slate-600 mb-4">Meaning understood but incomplete</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">الرَّحْمَٰنِ ۝</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="rule-card mt-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Test Your Knowledge</h2>
+                <div class="text-gray-800">
+                    Score: <span id="quizScore" class="font-bold">0</span>/<span id="totalQuestions">0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+
+            <div id="quizContainer" class="mb-6"></div>
+            
+            <div id="feedback" class="mb-4 p-4 rounded-lg hidden"></div>
+            
+            <div class="flex justify-between">
+                <button onclick="previousQuestion()" id="prevBtn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50">Previous</button>
+                <button onclick="nextQuestion()" id="nextBtn" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Next</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const quizQuestions = [
+    {
+        question: "What type of stop is required when the meaning would be distorted if continuing?",
+        options: [
+            "Permitted Stop",
+            "Obligatory Stop",
+            "Fair Stop",
+            "Good Stop"
+        ],
+        correct: 1,
+        explanation: "An Obligatory Stop (الوقف اللازم) is required when continuing would distort or contradict the intended meaning."
+    },
+    {
+        question: "When is it prohibited to stop?",
+        options: [
+            "At the end of a verse",
+            "In the middle of a word",
+            "At a complete meaning",
+            "When out of breath"
+        ],
+        correct: 1,
+        explanation: "It is prohibited to stop in the middle of a word as it disrupts the proper pronunciation and meaning."
+    },
+    {
+        question: "What characterizes a Complete Stop (تام)?",
+        options: [
+            "Stopping mid-sentence",
+            "Stopping at any point",
+            "Complete meaning with no connection to what follows",
+            "Incomplete meaning"
+        ],
+        correct: 2,
+        explanation: "A Complete Stop occurs when the meaning is complete and there is no grammatical or meaning connection to what follows."
+    },
+    {
+        question: "What should a reciter do when running out of breath?",
+        options: [
+            "Continue reciting",
+            "Stop at any point",
+            "Stop at the nearest permitted location",
+            "Skip to the next verse"
+        ],
+        correct: 2,
+        explanation: "When running out of breath, the reciter should stop at the nearest permitted location to maintain proper recitation."
+    },
+    {
+        question: "What is a Good Stop (كافي)?",
+        options: [
+            "Stopping in the middle of a word",
+            "Meaning is complete but connected to what follows",
+            "Incomplete meaning",
+            "Prohibited stop"
+        ],
+        correct: 1,
+        explanation: "A Good Stop occurs when the meaning is complete but there is some connection to what follows."
+    }
+];
+
+        let currentQuestion = 0;
+        let quizScore = 0;
+        let answeredQuestions = new Set();
+
+        function initializeQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            answeredQuestions = new Set();
+            document.getElementById('quizScore').textContent = '0';
+            document.getElementById('totalQuestions').textContent = quizQuestions.length;
+            updateProgressBar();
+            displayQuestion();
+            updateNavigationButtons();
+        }
+
+        function displayQuestion() {
+            const quiz = quizQuestions[currentQuestion];
+            const container = document.getElementById('quizContainer');
+            const isAnswered = answeredQuestions.has(currentQuestion);
+            
+            container.innerHTML = `
+                <div class="mb-6">
+                    <p class="text-xl font-semibold text-slate-800 mb-6">${quiz.question}</p>
+                    <div class="options-container">
+                        ${quiz.options.map((option, index) => `
+                            <div class="quiz-option p-4 border rounded-lg mb-3" 
+                                onclick="checkAnswer(${index})" 
+                                data-index="${index}">
+                                <div class="text-lg text-slate-800">${option}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            if (isAnswered) {
+                const options = container.querySelectorAll('.quiz-option');
+                options.forEach((option, index) => {
+                    if (index === quiz.correct) {
+                        option.classList.add('correct');
+                    }
+                });
+                
+                container.innerHTML += `
+                    <div class="p-4 bg-blue-50 rounded-lg text-slate-700 mb-4">
+                        <p class="font-semibold mb-2">Explanation:</p>
+                        <p class="text-lg">${quiz.explanation}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function checkAnswer(selected) {
+            if (answeredQuestions.has(currentQuestion)) return;
+
+            const quiz = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const selectedOption = options[selected];
+            const container = document.getElementById('quizContainer');
+            
+            if (selected === quiz.correct) {
+                selectedOption.classList.add('correct');
+                quizScore++;
+                document.getElementById('quizScore').textContent = quizScore;
+            } else {
+                selectedOption.classList.add('incorrect');
+                options[quiz.correct].classList.add('correct');
+            }
+
+            container.innerHTML += `
+                <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+                    <p class="font-semibold mb-2">Explanation:</p>
+                    <p>${quiz.explanation}</p>
+                </div>
+            `;
+
+            answeredQuestions.add(currentQuestion);
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        function updateProgressBar() {
+            const progress = (answeredQuestions.size / quizQuestions.length) * 100;
+            document.querySelector('.progress-fill').style.width = `${progress}%`;
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === quizQuestions.length - 1) {
+                if (answeredQuestions.has(currentQuestion)) {
+                    nextBtn.textContent = 'Restart Quiz';
+                    nextBtn.onclick = function() {
+                        initializeQuiz();
+                    };
+                    nextBtn.disabled = false;
+                } else {
+                    nextBtn.disabled = true;
+                    nextBtn.textContent = 'Next';
+                }
+            } else {
+                nextBtn.textContent = 'Next';
+                nextBtn.disabled = !answeredQuestions.has(currentQuestion);
+                nextBtn.onclick = function() {
+                    nextQuestion();
+                };
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+                updateNavigationButtons();
+            }
+        }
+
+        // Initialize quiz when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeQuiz();
+        });
+    </script>
+</body>
+</html>

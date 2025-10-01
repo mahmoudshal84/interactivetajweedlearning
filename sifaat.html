@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characteristics of the Letters</title>
+    <link rel="icon" href="./FrontPageTileImages/favicon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        .arabic {
+            font-family: 'Amiri', serif;
+        }
+
+        .char-card {
+    background: white;
+    transition: all 0.2s ease;
+    border-width: 3px !important;
+    border-style: solid !important;
+    border-radius: 1rem !important;
+}
+
+.rule-card {
+    background-color: white;
+    border-radius: 16px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 2px solid #D4AF37;
+}
+
+.rule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.with-opposites {
+    border-color: #3b82f6 !important;
+}
+
+.without-opposites {
+    border-color: #22c55e !important;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #3b82f6;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.char-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #93c5fd;
+        }
+
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .letter-group {
+            transition: background-color 0.2s ease;
+        }
+
+        .letter-group:hover {
+            background-color: #f8fafc;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full bg-cover bg-center bg-no-repeat" style="background-image: url('./FrontPageTileImages/islamicbackg.jpeg');">
+    <nav class="bg-gray-100/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="rule-card flex items-center justify-between h-16">
+                <a href="index.html" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">← Back to Home</a>
+                <h1 class="text-2xl font-bold text-gray-800">Characteristics of the Letters</h1>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+        <!-- Characteristics with Opposites -->
+<section class="rule-card">
+    <h2 class="section-title text-3xl font-bold text-slate-800">The 5 Characteristics with Opposites</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Jahr vs Hams -->
+<div class="char-card with-opposites rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-800">Jahr & Hams</h3>
+                        <span class="text-sm text-slate-500">Running of Breath</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="letter-group p-3 rounded">
+                            <h4 class="text-green-700 font-medium mb-1">Hams - Whisper</h4>
+                            <p class="text-sm text-slate-600 mb-2">Free running of breath</p>
+                            <div class="arabic text-xl text-slate-800">ف ح ث هـ ش خ ص س ك ت</div>
+                        </div>
+                        <div class="letter-group p-3 rounded">
+                            <h4 class="text-blue-600 font-medium mb-1">Jahr - Apparent</h4>
+                            <p class="text-sm text-slate-600 mb-2">Imprisoned running of breath</p>
+                            <div class="arabic text-xl text-slate-800">ب ت ج د ذ ر ز ض ط ظ ع غ ق ل م ن و ي ء</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shiddah vs Bayniyyah vs Rakhawa -->
+<div class="char-card with-opposites rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-800">Shiddah, Bayniyyah, and Rakhawa</h3>
+                        <span class="text-sm text-slate-500">Sound Flow</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="letter-group p-3 rounded">
+                            <h4 class="text-blue-600 font-medium mb-1">Shiddah - Strength</h4>
+                            <p class="text-sm text-slate-600 mb-2">Complete blockage of a running sound</p>
+                            <div class="arabic text-xl text-slate-800">أ ج د ق ط ب ك ت</div>
+                        </div>
+                        <div class="letter-group p-3 rounded">
+                            <h4 class="text-red-700 font-medium mb-1">Tawassut/Bayniyyah - In Between</h4>
+                            <p class="text-sm text-slate-600 mb-2">Moderate blockage of a running sound</p>
+                            <div class="arabic text-xl text-slate-800">ل ن ع م ر</div>
+                        </div>
+                        <div class="letter-group p-3 rounded">
+                            <h4 class="text-green-700 font-medium mb-1">Rakhawa - Softness</h4>
+                            <p class="text-sm text-slate-600 mb-2">Free flow of a running sound</p>
+                            <div class="arabic text-xl text-slate-800">ث ح خ ذ ز س ش ص ض ظ غ ف ه و ي ء</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Isti'la vs Istifal -->
+<div class="char-card with-opposites rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-800">Isti'la & Istifal</h3>
+                        <span class="text-sm text-slate-500">Rear of Tongue Position</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="letter-group p-3 rounded">
+                            <h4 class="text-blue-600 font-medium mb-1">Isti'la - Elevation</h4>
+                            <p class="text-sm text-slate-600 mb-2">Raising of rear of tongue</p>
+                            <div class="arabic text-xl text-slate-800">خ ص ض غ ط ق ظ</div>
+                        </div>
+                        <div class="letter-group p-3 rounded">
+                            <h4 class="text-green-700 font-medium mb-1">Istifal - Lowering</h4>
+                            <p class="text-sm text-slate-600 mb-2">Lowering of rear of tongue</p>
+                            <div class="arabic text-xl text-slate-800">All remaining letters</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itbaq vs Infitah -->
+<div class="char-card with-opposites rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-800">Itbaq & Infitah</h3>
+                        <span class="text-sm text-slate-500">Middle of Tongue Position</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="letter-group p-3 rounded">
+                            <h4 class="text-blue-600 font-medium mb-1">Itbaq - Adhesion</h4>
+                            <p class="text-sm text-slate-600 mb-2">Tongue covers roof of mouth</p>
+                            <div class="arabic text-xl text-slate-800">ص ض ط ظ</div>
+                        </div>
+                        <div class="letter-group p-3 rounded">
+                            <h4 class="text-green-700 font-medium mb-1">Infitah - Opening</h4>
+                            <p class="text-sm text-slate-600 mb-2">Space between tongue and roof</p>
+                            <div class="arabic text-xl text-slate-800">All remaining letters</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Idhlaq vs Ismat -->
+<div class="char-card with-opposites rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-800">Idhlaq & Ismat</h3>
+                        <span class="text-sm text-slate-500">Pronunciation Ease</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="letter-group p-3 rounded">
+                            <h4 class="text-blue-600 font-medium mb-1">Idhlaq - Fluency</h4>
+                            <p class="text-sm text-slate-600 mb-2">Light and quick pronunciation</p>
+                            <div class="arabic text-xl text-slate-800">ف ر م ن ل ب</div>
+                        </div>
+                        <div class="letter-group p-3 rounded">
+                            <h4 class="text-green-700 font-medium mb-1">Ismat - Desisting</h4>
+                            <p class="text-sm text-slate-600 mb-2">Heavy and not quick pronunciation</p>
+                            <div class="arabic text-xl text-slate-800">All remaining letters</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Characteristics without Opposites -->
+<section class="rule-card">
+    <h2 class="section-title text-3xl font-bold text-slate-800">The 7 Characteristics without Opposites</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Qalqalah -->
+                <div class="char-card without-opposites rounded-lg p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Qalqalah - Bouncing</h3>
+                    <p class="text-sm text-slate-600 mb-4">Bouncing sound when letter has sukoon</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">ق ط ب ج د</div>
+                    </div>
+                </div>
+
+                <!-- Safir -->
+                <div class="char-card without-opposites rounded-lg p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Safir - Whistling</h3>
+                    <p class="text-sm text-slate-600 mb-4">Whistling sound during pronunciation</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">ص س ز</div>
+                    </div>
+                </div>
+
+                <!-- Leen -->
+                <div class="char-card without-opposites rounded-lg p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Leen - Softness</h3>
+                    <p class="text-sm text-slate-600 mb-4">Pronunciation with ease and without exaggeration when the letter has sukoon and is preceded by fathah</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">و ي</div>
+                    </div>
+                </div>
+
+                <!-- Inhiraf -->
+                <div class="char-card without-opposites rounded-lg p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Inhiraf - Drifting</h3>
+                    <p class="text-sm text-slate-600 mb-4">Drifting of a letter away from its makhraj until it connects to a different makhraj</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">ل ر</div>
+                    </div>
+                </div>
+
+                <!-- Tafashi -->
+                <div class="char-card without-opposites rounded-lg p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Tafashi - Spreading</h3>
+                    <p class="text-sm text-slate-600 mb-4">Spreading of air in mouth</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">ش</div>
+                    </div>
+                </div>
+
+                <!-- Istitaalah -->
+                <div class="char-card without-opposites rounded-lg p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Istitaalah - Lengthening</h3>
+                    <p class="text-sm text-slate-600 mb-4">Lengthening the sound from the back edge of the tongue to the tip</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">ض</div>
+                    </div>
+                </div>
+
+                <!-- Takrir -->
+                <div class="char-card without-opposites rounded-lg p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-3">Takreer - Repetition</h3>
+                    <p class="text-sm text-slate-600 mb-4">Trilling/vibration of the tip of the tongue</p>
+                    <div class="letter-group p-3 rounded">
+                        <div class="arabic text-xl text-slate-800">ر</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Quiz Mode Section -->
+<section class="rule-card mt-8">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-semibold text-gray-800">Test Your Knowledge</h2>
+        <div class="text-gray-800">
+            Score: <span id="letterScore" class="font-bold">0</span>/<span id="letterTotalQuestions">0</span>
+        </div>
+    </div>
+    
+    <div class="progress-bar">
+        <div class="progress-fill" style="width: 0%"></div>
+    </div>
+
+    <div id="letterQuizContainer" class="mb-6"></div>
+    
+    <div id="letterFeedback" class="mb-4 p-4 rounded-lg hidden"></div>
+    
+    <div class="flex justify-between">
+        <button onclick="previousLetterQuestion()" id="letterPrevBtn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50">Previous</button>
+        <button onclick="nextLetterQuestion()" id="letterNextBtn" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Next</button>
+    </div>
+</section>
+    </main>
+    <script>
+        const letterQuizQuestions = [
+    {
+        question: "Which letters have the characteristic of Qalqalah?",
+        options: [
+            "ف ر م ن ل ب",
+            "ق ط ب ج د",
+            "ص س ز",
+            "و ي"
+        ],
+        correct: 1,
+        explanation: "The Qalqalah letters are ق ط ب ج د, which produce a bouncing sound when they have sukoon."
+    },
+    {
+        question: "Which characteristic describes a whistling sound during pronunciation?",
+        options: ["Safir", "Leen", "Inhiraf", "Tafashi"],
+        correct: 0,
+        explanation: "Safir is the characteristic that produces a whistling sound, found in the letters ص س ز."
+    },
+    {
+        question: "What is the defining feature of Isti'la letters?",
+        options: [
+            "Continuous flow of sound",
+            "Raising of the rear-most part of the tongue",
+            "Bouncing sound",
+            "Nasal resonance"
+        ],
+        correct: 1,
+        explanation: "Isti'la is characterized by the  raising of the deepest part of the tongue during pronunciation, found in letters خ ص ض ط ظ غ ق."
+    },
+    {
+        question: "Which characteristic involves complete blockage of sound?",
+        options: ["Rakhawa", "Jahr", "Shiddah", "Hams"],
+        correct: 2,
+        explanation: "Shiddah involves complete blockage of sound, found in letters أ ج د ق ط ب ك ت."
+    },
+    {
+        question: "What is special about letters with the Itbaq characteristic?",
+        options: [
+            "They have a whistling sound",
+            "The tongue covers the ceiling of mouth",
+            "They have light pronunciation",
+            "They have continuous airflow"
+        ],
+        correct: 1,
+        explanation: "Itbaq letters (ص ض ط ظ) are pronounced with the tongue covering the ceiling of the mouth."
+    },
+    {
+        question: "Which single letter has the characteristic of Istitaalah?",
+        options: ["ر", "ش", "ض", "ل"],
+        correct: 2,
+        explanation: "Only the letter ض has the characteristic of Istitaalah, producing an elongated sound from the side of the tongue."
+    },
+    {
+        question: "Which letters are characterized by Leen?",
+        options: [
+            "ص س ز",
+            "و ي",
+            "م ن",
+            "ق ط ب"
+        ],
+        correct: 1,
+        explanation: "Leen applies to و and ي when they are preceded by a fathah, resulting in a soft pronunciation."
+    },
+    {
+        question: "What is a main feature of Inhiraf letters?",
+        options: [
+            "Complete blockage of sound",
+            "Nasal resonance",
+            "Sound deviation to tongue side",
+            "Spreading of air in mouth"
+        ],
+        correct: 2,
+        explanation: "Inhiraf letters (ل and ر) are characterized by the sound deviating to the side of the tongue during pronunciation."
+    },
+    {
+        question: "Which characteristic is exclusive to the letter ش?",
+        options: [
+            "Safir",
+            "Tafashi",
+            "Takrir",
+            "Istitaalah"
+        ],
+        correct: 1,
+        explanation: "Tafashi is unique to the letter ش, characterized by the spreading of air in the mouth during pronunciation."
+    },
+    {
+        question: "Which letters are known for their light and quick pronunciation (Idhlaq)?",
+        options: [
+            "ف ر م ن ل ب",
+            "ق ط ب ج د",
+            "خ ص ض ط ظ غ ق",
+            "ص س ز"
+        ],
+        correct: 0,
+        explanation: "The Idhlaq letters (ف ر م ن ل ب) are characterized by their light and quick pronunciation."
+    },
+    {
+        question: "Which characteristic describes the vibration of the tongue tip?",
+        options: [
+            "Safir",
+            "Leen",
+            "Takrir",
+            "Tafashi"
+        ],
+        correct: 2,
+        explanation: "Takrir, found only in the letter ر, describes the vibration of the tongue tip during pronunciation."
+    },
+    {
+        question: "What happens when Qalqalah letters have a sukoon?",
+        options: [
+            "They become silent",
+            "They produce a bouncing sound",
+            "They lengthen in pronunciation",
+            "They merge with the next letter"
+        ],
+        correct: 1,
+        explanation: "When Qalqalah letters (ق ط ب ج د) have sukoon, they produce a distinct bouncing sound."
+    },
+    {
+        question: "How many letters have the characteristic of Safir?",
+        options: [
+            "Two",
+            "Three",
+            "Four",
+            "Five"
+        ],
+        correct: 1,
+        explanation: "Three letters (ص س ز) have the Safir characteristic, producing a whistling sound."
+    },
+    {
+        question: "Which group contains only Itbaq (Tongue covers roof of mouth) letters?",
+        options: [
+            "ف ر م ن ل ب",
+            "و ي",
+            "ث ح خ ذ ز س",
+            "ص ض ط ظ"
+        ],
+        correct: 3,
+        explanation: "The letters ص ض ط ظ are all Ismat letters, characterized by their heavy pronunciation."
+    },
+    {
+        question: "How many characteristics with opposites are there in total?",
+        options: [
+            "Three",
+            "Four",
+            "Five",
+            "Six"
+        ],
+        correct: 2,
+        explanation: "There are five characteristics with opposites: Jahr/Hams, Shiddah/Rakhawa, Isti'la/Istifal, Itbaq/Infitah, and Idhlaq/Ismat."
+    },
+    {
+        question: "Which characteristic involves all the remaining letters not included in Jahr?",
+        options: [
+            "Rakhawa",
+            "Hams",
+            "Istifal",
+            "Infitah"
+        ],
+        correct: 1,
+        explanation: "Hams is the opposite of Jahr and includes all letters not characterized by Jahr (ف ح ث هـ ش خ ص س ك ت)."
+    },
+    {
+        question: "What is common among all Itbaq letters?",
+        options: [
+            "They all have Qalqalah",
+            "They all have Safir",
+            "They all have Isti'la",
+            "They all have Rakhawa"
+        ],
+        correct: 2,
+        explanation: "All Itbaq letters (ص ض ط ظ) also possess the characteristic of Isti'la (raising of the tongue)."
+    },
+    {
+        question: "Which letter combines the characteristics of Inhiraf and Takrir?",
+        options: [
+            "ل",
+            "ن",
+            "ر",
+            "م"
+        ],
+        correct: 2,
+        explanation: "The letter ر has both Inhiraf (drifting of sound) and Takrir (vibration of tongue tip) characteristics."
+    },
+    {
+        question: "How many characteristics without opposites are there?",
+        options: [
+            "Six",
+            "Seven",
+            "Eight",
+            "Nine"
+        ],
+        correct: 1,
+        explanation: "There are seven characteristics without opposites: Qalqalah, Safir, Leen, Inhiraf, Takrir, Tafashi, and Istitaalah."
+    }
+];
+
+let currentLetterQuestion = 0;
+let letterQuizScore = 0;
+let answeredLetterQuestions = new Set();
+
+function initializeLetterQuiz() {
+    currentLetterQuestion = 0;
+    letterQuizScore = 0;
+    answeredLetterQuestions = new Set();
+    document.getElementById('letterScore').textContent = '0';
+    document.getElementById('letterTotalQuestions').textContent = letterQuizQuestions.length;
+    updateLetterProgressBar();
+    displayLetterQuestion();
+    updateLetterNavigationButtons();
+}
+
+function displayLetterQuestion() {
+    const quiz = letterQuizQuestions[currentLetterQuestion];
+    const container = document.getElementById('letterQuizContainer');
+    const isAnswered = answeredLetterQuestions.has(currentLetterQuestion);
+    
+    container.innerHTML = `
+        <div class="mb-6">
+            <p class="text-xl font-semibold text-slate-800 mb-6">${quiz.question}</p>
+            <div class="options-container">
+                ${quiz.options.map((option, index) => `
+                    <div class="quiz-option p-4 border rounded-lg mb-3" 
+                        onclick="checkLetterAnswer(${index})" 
+                        data-index="${index}">
+                        <div class="text-lg text-slate-800">${option}</div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+
+    if (isAnswered) {
+        const options = container.querySelectorAll('.quiz-option');
+        options.forEach((option, index) => {
+            if (index === quiz.correct) {
+                option.classList.add('correct');
+            }
+        });
+        
+        container.innerHTML += `
+            <div class="p-4 bg-blue-50 rounded-lg text-slate-700 mb-4">
+                <p class="font-semibold mb-2">Explanation:</p>
+                <p class="text-lg">${quiz.explanation}</p>
+            </div>
+        `;
+    }
+}
+
+function checkLetterAnswer(selected) {
+    if (answeredLetterQuestions.has(currentLetterQuestion)) return;
+
+    const quiz = letterQuizQuestions[currentLetterQuestion];
+    const options = document.querySelectorAll('.quiz-option');
+    const selectedOption = options[selected];
+    const container = document.getElementById('letterQuizContainer');
+    
+    if (selected === quiz.correct) {
+        selectedOption.classList.add('correct');
+        letterQuizScore++;
+        document.getElementById('letterScore').textContent = letterQuizScore;
+    } else {
+        selectedOption.classList.add('incorrect');
+        options[quiz.correct].classList.add('correct');
+    }
+
+    container.innerHTML += `
+        <div class="p-4 bg-blue-50 rounded-lg text-gray-700 mb-4">
+            <p class="font-semibold mb-2">Explanation:</p>
+            <p>${quiz.explanation}</p>
+        </div>
+    `;
+
+    answeredLetterQuestions.add(currentLetterQuestion);
+    updateLetterProgressBar();
+    updateLetterNavigationButtons();
+}
+
+function updateLetterProgressBar() {
+    const progress = (answeredLetterQuestions.size / letterQuizQuestions.length) * 100;
+    document.querySelector('.progress-fill').style.width = `${progress}%`;
+}
+
+function updateLetterNavigationButtons() {
+    const prevBtn = document.getElementById('letterPrevBtn');
+    const nextBtn = document.getElementById('letterNextBtn');
+    
+    prevBtn.disabled = currentLetterQuestion === 0;
+    
+    if (currentLetterQuestion === letterQuizQuestions.length - 1) {
+        if (answeredLetterQuestions.has(currentLetterQuestion)) {
+            nextBtn.textContent = 'Restart Quiz';
+            nextBtn.onclick = function() {
+                initializeLetterQuiz();
+            };
+            nextBtn.disabled = false;
+        } else {
+            nextBtn.disabled = true;
+            nextBtn.textContent = 'Next';
+        }
+    } else {
+        nextBtn.textContent = 'Next';
+        nextBtn.disabled = !answeredLetterQuestions.has(currentLetterQuestion);
+        nextBtn.onclick = function() {
+            nextLetterQuestion();
+        };
+    }
+}
+
+function nextLetterQuestion() {
+    if (currentLetterQuestion < letterQuizQuestions.length - 1) {
+        currentLetterQuestion++;
+        displayLetterQuestion();
+        updateLetterNavigationButtons();
+    }
+}
+
+function previousLetterQuestion() {
+    if (currentLetterQuestion > 0) {
+        currentLetterQuestion--;
+        displayLetterQuestion();
+        updateLetterNavigationButtons();
+    }
+}
+
+// Make sure to call initializeLetterQuiz when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    initializeLetterQuiz();
+});
+    </script>
+</body>
+</html>
