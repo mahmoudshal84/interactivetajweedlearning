@@ -378,10 +378,20 @@ If the letter is <strong>'ل' (lam) or 'ر' (ra)</strong>, pronounce it <strong>
                         </div>
                     `).join('')}
                 </div>
+                <div class="text-center mt-8">
+                    <button onclick="scrollToQuiz()" class="px-8 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 text-lg font-semibold transition-all transform hover:scale-105">
+                        Go to Quiz! 📝
+                    </button>
+                </div>
             </div>
         </div>
     `;
 }
+
+        function scrollToQuiz() {
+            const quizSection = document.getElementById('quizMode');
+            quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
 
         function nextRule() {
             currentRule = (currentRule + 1) % rules.length;
